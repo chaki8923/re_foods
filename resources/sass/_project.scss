@@ -1,0 +1,917 @@
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande",
+    sans-serif;
+}
+.main {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+//keyview
+.key-view {
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+  &--panel {
+    position: absolute;
+    top: 50%;
+    right: 3rem;
+    @include mq(sp) {
+      width: 100%;
+      left: 50%;
+      text-align: center;
+      transform: translateX(-50%);
+    }
+    h2 {
+      color: #fff;
+      font-size: 3rem;
+    }
+    p {
+      color: #fff;
+      font-size: 1rem;
+    }
+  }
+}
+
+.start-btn {
+  a {
+    text-decoration: none;
+  }
+}
+/////////////////////////////////SELECT//////////////////////////////////
+.small{
+  font-size: 12px;
+}
+.select-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 48px 24px;
+  @include mq(sp) {
+    flex-wrap: wrap;
+  }
+}
+
+.action-select {
+  text-decoration: none;
+  padding: 24px 10px;
+  display: block;
+  width: 40%;
+  transition: 0.3s;
+  border-radius: 5px;
+  p{
+    color: #333;
+    font-family: YuGothic,'Yu Gothic','游明朝体+36ポかな','YuMincho +36p Kana','Hannotate SC',sans-serif;
+
+  }
+  @include mq(sp) {
+    width: 90%;
+    margin: 16px auto;
+  }
+  &:hover {
+    transition: 0.3s;
+    opacity: 0.6;
+  }
+}
+.action-select.register {
+  background: #faf7ef;
+  border: 4px #B2EA70 solid;
+  
+}
+.search {
+  
+  background: #faf7ef;
+  border: 4px #FBD148 solid;
+}
+
+.flat-image {
+  width: 100%;
+}
+
+//////////////////////////////////食材登録/////////////////////////////////
+
+.food-regist-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: url("/images/food_bc2.jpg") no-repeat;
+  background-size: 100%;
+}
+
+.file-area {
+  display: none;
+}
+
+.preview-area,
+.food-preview {
+  width: 90%;
+  height: 200px;
+  margin-bottom: 10px;
+  background: #ddd;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  p {
+    position: absolute;
+    top: 45%;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+  img {
+    width: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: 9;
+  }
+}
+.food-preview img {
+  opacity: 1;
+}
+
+.image-clear {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+///////////////////////////////フード一覧&詳細////////////////////////////////////
+.category {
+  &-card-body {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      object-fit: cover;
+      width: 40%;
+    }
+  }
+}
+
+.store-image {
+  object-fit: cover;
+  object-position: top;
+}
+///////////////////////////////////////////////////////////////////
+//item List
+.item-card{
+position: relative;
+}
+.decision-icon{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+//品物詳細
+///////////////////////////////////////////////////////////////////
+
+.detail-container {
+  width: 100%;
+  padding: 24px 10px;
+}
+
+.item-container {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  @include mq(sp) {
+    width: 100%;
+  }
+}
+
+.item-view {
+  position: relative;
+  width: 420px;
+  margin: auto;
+  height: 300px;
+  overflow: hidden;
+  @include mq(sp) {
+    width: 100%;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.2s;
+    opacity: 0;
+    &.fadeIn {
+      opacity: 1;
+      transition: 0.4s;
+    }
+  }
+}
+.decision-img{
+  position: absolute;
+  width: 40%!important;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  z-index: 10;
+  opacity: 1!important;
+
+}
+
+.item-sub-view {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+
+.sub-view {
+  width: 20%;
+  height: 180px;
+  background: #ddd;
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  @include mq(md) {
+    width: 90%;
+    height: 140px;
+    flex-wrap: wrap;
+  }
+  @include mq(sp) {
+    width: 100%;
+    height: 100px;
+    flex-wrap: wrap;
+  }
+  &::after {
+    position: absolute;
+    content: "NO IMAGE";
+    color: #333;
+    top: 50%;
+    text-align: center;
+    width: 100%;
+    z-index: 0;
+  }
+  img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+}
+
+.food-text {
+  width: 80%;
+  margin: 12px auto;
+  background: #fff;
+  text-align: center;
+  padding: 16px 10px;
+  border: 2px #ddd solid;
+  display: flex;
+  @include mq(sp) {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  &-area {
+    width: 80%;
+    @include mq(sp) {
+      width: 100%;
+    }
+    h4 {
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
+    }
+    p {
+      letter-spacing: 0.5em;
+    }
+  }
+}
+///////////////////////////////////////////////////////////////////
+///////////////////////////////レシピ////////////////////////////////////
+#resipi {
+  margin-top: 48px;
+}
+.slide-sample {
+  background-color: aqua;
+  width: 250px;
+  height: 250px;
+}
+
+.resipe-title {
+  width: 100%;
+  text-align: center;
+  line-height: 3rem;
+  color: #fff;
+  background: #F9975D;
+  font-size: 2em;
+}
+.resipe-area {
+  width: 100%;
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  @include mq(md) {
+    justify-content: space-around;
+    margin-bottom: 100px;
+  }
+  @include mq(sp) {
+    justify-content: center;
+  }
+}
+.resipi-text{
+  font-size: 14px;
+}
+.resipi-item {
+  width: 250px;
+  height: auto;
+  background: rgb(245, 240, 240);
+  overflow: hidden;
+  @include mq(sp) {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+}
+.resipi-list {
+  margin-top: 40px;
+}
+
+.resipi-img {
+  display: block;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.resipe-text-area {
+  padding: 18px 10px;
+}
+//////////////////////////////USER詳細/////////////////////////////////////
+.user-content {
+  width: 60%;
+  margin: 120px auto;
+  background: rgb(250, 207, 158);
+  padding: 16px 10px;
+  @include mq(md){
+    width: 80%;
+  }
+  @include mq(sp){
+    width: 90%;
+  }
+}
+.user-name {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  h3 {
+    text-align: center;
+    line-height: 1em;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  }
+}
+.user-comment {
+  width: 70%;
+  background: #fff;
+  padding: 10px 10px;
+  position: relative;
+  white-space: pre-line;
+  @include mq(sp){
+    width: 50%;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    margin-top: -15px;
+    border: 15px solid transparent;
+    border-right: 15px solid #fff;
+  }
+}
+
+.user-image {
+  width: 20%;
+  text-align: center;
+  @include mq(sp) {
+    width: 40%;
+  }
+  img {
+    width: 100%;
+    border-radius: 50%;
+    border: 5px #fff solid;
+  }
+}
+
+.user-table{
+  width: 100%;
+  border-collapse: collapse;
+  @include mq(sp){
+
+    margin-top: 16px;
+  }
+}
+
+.user-table tr{
+  border-bottom: solid 2px white;
+}
+
+.user-table tr:last-child{
+  border-bottom: none;
+}
+
+.user-table th{
+  position: relative;
+  text-align: left;
+  width: 30%;
+  background-color: #fab112;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  @include mq(sp){
+    font-size: 11px;
+  }
+}
+
+.user-table th:after{
+  display: block;
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  top:calc(50% - 10px);
+  right:-10px;
+  border-left: 10px solid #fab112;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+.user-table td{
+  text-align: left;
+  width: 70%;
+  text-align: center;
+  background-color: #eee;
+  padding: 10px 0;
+}
+
+.google-map {
+  margin-top: 24px;
+  width: 100%;
+}
+///////////////////////////////////////////////////////////////////
+//////////////////////////////MYpage/////////////////////////////////////
+.mypage {
+  height: auto;
+  position: relative;
+}
+.tab-area {
+  width: 100%;
+  margin-top: 10px;
+}
+.tab {
+  &-list {
+    list-style: none;
+    text-align: center;
+    padding-left: 0;
+    // tabu作る
+  }
+  &-item {
+    display: inline-block;
+    padding: 8px 12px;
+    cursor: pointer;
+    position: relative;
+    font-size: 18px;
+    border: 2px $orange solid;
+    transition: 0.2s;
+    &:nth-child(2) {
+      @include mq(md) {
+        border-top: none;
+      }
+      @include mq(sp) {
+        border-top: none;
+      }
+    }
+    &:nth-child(3) {
+      @include mq(md) {
+        border-top: none;
+      }
+      @include mq(sp) {
+        border-top: none;
+      }
+    }
+    &:nth-child(4) {
+      @include mq(md) {
+        border-top: none;
+      }
+      @include mq(sp) {
+        border-top: none;
+      }
+    }
+    @include mq(md) {
+      width: 50%;
+    }
+    @include mq(sp) {
+      width: 80%;
+    }
+    &.active {
+      background: $orange;
+      color: #fff;
+    }
+    &:hover {
+      background: $orange;
+      color: #fff;
+      transition: 0.2s;
+    }
+  }
+}
+//////////////////////////////利用規約など/////////////////////////////////////
+
+.title{
+  width: 100%;
+  letter-spacing: 2px;
+  text-align: center;
+
+}
+
+.main-title{
+  padding: 24px 10px;
+  font-size: 28px;
+  margin-bottom: 50px;
+  line-height: 1.5em;
+  @include mq(lg){
+    margin-bottom: 20px;
+  }
+  @include mq(sp){
+    margin-bottom: 50px;
+  }
+  br{
+    display: none;
+    @include mq(sp){
+      display: block;
+    }
+  }
+}
+
+.main-content{
+  width: 50%;
+  margin: auto;
+  padding: 24px 10px;
+  background-color: #F7F7F7;
+  @include mq(lg){
+    width: 90%;
+  }
+  @include mq(sp){
+    width: 95%;
+  }
+  &-inner{
+    padding: 24px 10px;
+    margin-top: 16px;
+    strong{
+      line-height: 1.5em;
+      font-size: 18px;
+    }
+  }
+  &-image{
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 60px;
+    @include mq(md){
+      height: 420px;
+    }
+    @include mq(sp){
+      height: 220px;
+    }
+    img{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      object-fit: cover;
+      top: 0;
+      left: 0;
+    }
+  }
+  
+}
+.discription-title{
+  position: relative;
+  width: fit-content;
+  margin: auto;
+  &::before{
+    position: absolute;
+    left: -50%;
+    top: 50%;
+    height: 2px;
+    width: 80px;
+    content: '';
+    background: #C85C5C;
+    @include mq(sp){
+      width: 20%;
+      left: -20%;
+    }
+
+  }
+  &::after{
+    position: absolute;
+    right: -50%;
+    top: 50%;
+    height: 2px;
+    width: 80px;
+    content: '';
+    background: #C85C5C;
+    @include mq(sp){
+      width: 20%;
+      right: -20%;
+    }
+
+  }
+}
+
+.discription{
+  margin: 40px 0;
+  
+  h2{
+    margin-bottom: 25px;
+    br{
+      display: none;
+      @include mq(sp){
+        display: block;
+      }
+    }
+    @include mq(sp){
+      font-size: 16px;
+    }
+  }
+  p{
+    line-height: 1.5em;
+  }
+}
+
+//ぷらばしー
+.container-wraiper{
+  background: rgb(241, 235, 235);
+  padding: 24px 0;
+}
+.privacy-container{
+
+  --swiper-theme-color: #007aff;
+  --swiper-navigation-size: 44px;
+  word-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Hiragino Kaku Gothic Pro","\30D2\30E9\30AE\30CE\89D2\30B4   Pro W3",Meiryo,メイリオ,Osaka,"MS PGothic",arial,helvetica,Lucida Grande,sans-serif;
+  color: #212121;
+  letter-spacing: .5px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 960px;
+  background: #fff;
+  font-size: 13px;
+  padding: 40px 30px;
+  h1{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  p{
+    margin-bottom: 20px;
+  }
+  section{
+    padding-bottom: 20px;
+    h2{
+      padding: 10px 0;
+      font-size: 16px;
+      font-weight: bold;
+  }
+  p{
+    margin-bottom: 20px;
+  }
+  ul{
+    --swiper-theme-color: #007aff;
+    --swiper-navigation-size: 44px;
+    word-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Hiragino Kaku Gothic Pro","\30D2\30E9\30AE\30CE\89D2\30B4   Pro W3",Meiryo,メイリオ,Osaka,"MS PGothic",arial,helvetica,Lucida Grande,sans-serif;
+    color: #212121;
+    letter-spacing: .5px;
+    line-height: 1.5;
+    font-size: 13px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    padding-left: 30px;
+    li{
+      --swiper-theme-color: #007aff;
+      --swiper-navigation-size: 44px;
+      word-wrap: break-word;
+      -webkit-font-smoothing: antialiased;
+      font-family: "Hiragino Kaku Gothic Pro","\30D2\30E9\30AE\30CE\89D2\30B4   Pro W3",Meiryo,メイリオ,Osaka,"MS PGothic",arial,helvetica,Lucida Grande,sans-serif;
+      color: #212121;
+      letter-spacing: .5px;
+      line-height: 1.5;
+      font-size: 13px;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      list-style: disc;
+      margin-bottom: 5px;
+    }
+  }
+  ol{
+    --swiper-theme-color: #007aff;
+    --swiper-navigation-size: 44px;
+    word-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Hiragino Kaku Gothic Pro","\30D2\30E9\30AE\30CE\89D2\30B4   Pro W3",Meiryo,メイリオ,Osaka,"MS PGothic",arial,helvetica,Lucida Grande,sans-serif;
+    color: #212121;
+    letter-spacing: .5px;
+    line-height: 1.5;
+    font-size: 13px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    padding-left: 30px;
+    li{
+      --swiper-theme-color: #007aff;
+      --swiper-navigation-size: 44px;
+      word-wrap: break-word;
+      -webkit-font-smoothing: antialiased;
+      font-family: "Hiragino Kaku Gothic Pro","\30D2\30E9\30AE\30CE\89D2\30B4   Pro W3",Meiryo,メイリオ,Osaka,"MS PGothic",arial,helvetica,Lucida Grande,sans-serif;
+      color: #212121;
+      letter-spacing: .5px;
+      line-height: 1.5;
+      font-size: 13px;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      margin-bottom: 5px;
+    }
+  }
+    }
+  }
+
+////////////////////////////////問い合わせ///////////////////////////////////
+.Form {
+  margin-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 720px;
+  }
+  @media screen and (max-width: 480px) {
+  .Form {
+  margin-top: 40px;
+  }
+  }
+  .Form-Item {
+  border-top: 1px solid #ddd;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  }
+  @media screen and (max-width: 480px) {
+  .Form-Item {
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  flex-wrap: wrap;
+  }
+  }
+  .Form-Item:nth-child(5) {
+  border-bottom: 1px solid #ddd;
+  }
+  .Form-Item-Label {
+  width: 100%;
+  max-width: 248px;
+  letter-spacing: 0.05em;
+  font-weight: bold;
+  font-size: 18px;
+  }
+  @media screen and (max-width: 480px) {
+  .Form-Item-Label {
+  max-width: inherit;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  }
+  }
+  .Form-Item-Label.isMsg {
+  margin-top: 8px;
+  margin-bottom: auto;
+  }
+  @media screen and (max-width: 480px) {
+  .Form-Item-Label.isMsg {
+  margin-top: 0;
+  }
+  }
+  .Form-Item-Label-Required {
+  border-radius: 6px;
+  margin-right: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 48px;
+  display: inline-block;
+  text-align: center;
+  background: #5bc8ac;
+  color: #fff;
+  font-size: 14px;
+  }
+  @media screen and (max-width: 480px) {
+  .Form-Item-Label-Required {
+  border-radius: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  width: 32px;
+  font-size: 10px;
+  }
+  }
+  .Form-Item-Input {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-left: 40px;
+  padding-left: 1em;
+  padding-right: 1em;
+  height: 48px;
+  flex: 1;
+  width: 100%;
+  max-width: 410px;
+  background: #eaedf2;
+  font-size: 18px;
+  }
+  @media screen and (max-width: 480px) {
+  .Form-Item-Input {
+  margin-left: 0;
+  margin-top: 18px;
+  height: 40px;
+  flex: inherit;
+  font-size: 15px;
+  }
+  }
+  .Form-Item-Textarea {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-left: 40px;
+  padding-left: 1em;
+  padding-right: 1em;
+  height: 216px;
+  flex: 1;
+  width: 100%;
+  max-width: 410px;
+  background: #eaedf2;
+  font-size: 18px;
+  }
+  @media screen and (max-width: 480px) {
+  .Form-Item-Textarea {
+  margin-top: 18px;
+  margin-left: 0;
+  height: 200px;
+  flex: inherit;
+  font-size: 15px;
+  }
+  }
+  .Form-Btn {
+  border-radius: 6px;
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 280px;
+  display: block;
+  letter-spacing: 0.05em;
+  background: #5bc8ac;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  }
+  @media screen and (max-width: 480px) {
+  .Form-Btn {
+  margin-top: 24px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 160px;
+  font-size: 16px;
+  }
+  }

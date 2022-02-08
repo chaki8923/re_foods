@@ -1,0 +1,32 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+//original
+@import 'utility';
+@import 'project';
+@import 'component';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+body{
+  font-family: YuGothic,'Yu Gothic','游明朝体+36ポかな','YuMincho +36p Kana','Hannotate SC',sans-serif;
+}
+
+.navbar{
+  background: #C85C5C;
+
+}
+.nav-link{
+  color: #fff!important;
+
+}
+
+.mail-icon{
+  display: block;
+  font-size: 18px;
+  margin-left: 10px;
+}
+

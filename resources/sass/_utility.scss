@@ -1,0 +1,162 @@
+$breakpoints:(
+  'sp': 'screen and (max-width: 590px)',
+  'md': 'screen and (min-width:591px) and (max-width: 768px)',
+  'lg': 'screen and (max-width: 1000px)',
+  'xl' : 'screen and (max-width: 1400px)',
+)!default;
+//@mixinは関数みたいなものを作れる
+
+@mixin mq($breakpoint: sp){
+  @media #{map-get($breakpoints,$breakpoint)}{
+    @content;
+  }
+}
+
+body{
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+}
+
+.sp{
+  margin-right: 16px;
+  @include mq(sp){
+    margin-right: 0;
+  }
+}
+.section{
+  background: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+}
+
+
+
+.loading-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(255, 255, 255);
+  z-index: 120;
+
+}
+$time: 1s;
+.loading {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  left: 50%;
+  top: 50%;
+  margin: -24px 0 0 -24px;
+  span {
+    animation-name: loading;
+    animation-duration: $time;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    display: block;
+    margin: 2px;
+    width: 20px;
+    height: 20px;
+    float: left;
+    &:nth-child(1) {
+      animation-delay: 0s;
+      background-color: #3BAED4;
+    }
+    &:nth-child(2) {
+      animation-delay: $time * .25;
+      background-color: #2BAB66;
+    }
+    &:nth-child(3) {
+      clear: both;
+      float: right;
+      animation-delay: $time * .5;
+      background-color: #EAAC39;
+    }
+    &:nth-child(4) {
+      animation-delay: $time * .75;
+      background-color: #DB4D48;
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.responsibe{
+  @include mq(sp){
+    display: none;
+  }
+}
+
+.user-detail-btn{
+  @include mq(sp){
+
+    white-space: nowrap;
+  }
+}
+
+.tell-icon{
+  font-size: 18px;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.nav-link{
+  transition: .3s;
+  &:hover{
+    opacity: .6;
+    transition: .3s;
+  }
+}
+
+
+input[type="date"]::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+}
+
+input[type="date"]::-webkit-clear-button{
+  -webkit-appearance: none;
+}
+
+input[type="date"]{
+ 
+  /*忘れずに書きましょう。*/
+  position: relative;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.food-label{
+  position: relative;
+  padding: 1rem 2rem;
+  border: 4px solid rgb(230, 153, 81);
+  width: fit-content;
+  margin: auto;
+  &::before{
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    content: '';
+    border: 2px solid rgb(230, 153, 81);
+  }
+}
