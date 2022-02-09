@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Store extends Model
 {
+
+    protected $table = 'stores';
     protected $fillable =['store_name','email','add_id','post_number','tell_number','store_image','password','last_accessed_at','comment'];
 
     protected $dates = [
