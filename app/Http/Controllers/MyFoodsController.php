@@ -9,7 +9,7 @@ use App\Food;
 use App\Message;
 use App\Store;
 use Illuminate\Support\Facades\DB;
-use App\common\getPushClass;
+// use App\common\getPushClass;
 use App\Like;
 use App\SubCategory;
 use Carbon\Carbon;
@@ -156,16 +156,17 @@ class MyFoodsController extends Controller
         $store = Store::find($id);
         $my_food_id = Food::where('store_id', $id)->select('id')->get();
 
-        $pertner = getPushClass::getPush();
-        Log::debug('push' . $pertner);
+        // $pertner = getPushClass::getPush();
         $detail_link = route('item_detail', 0);
 
-        if ($pertner->isEmpty()) {
-            $link = route('chat.list', 0);
-        } else {
-            $link = route('chat.list', $pertner[0]->food_id);
-        }
-
+        // if ($pertner->isEmpty()) {
+        //     $link = route('chat.list', 0);
+        // } else {
+        //     $link = route('chat.list', $pertner[0]->food_id);
+        // }
+    
+        $link = route('chat.list', 0);
+        
 
         $likes = Like::where('new_flg', true)
             ->join('stores', 'likes.store_id', '=', 'stores.id')
@@ -176,7 +177,8 @@ class MyFoodsController extends Controller
         Log::debug('likes' . $likes);
 
 
-        return view('foods.action', compact('store', 'foods', 'new_msg', 'pertner', 'link', 'my_food_id', 'likes', 'detail_link'));
+        return view('foods.action', compact('store', 'foods','link', 'new_msg', 'my_food_id', 'likes', 'detail_link'));
+        // return view('foods.action', compact('store', 'foods', 'new_msg', 'pertner', 'link', 'my_food_id', 'likes', 'detail_link'));
     }
 
 
@@ -211,14 +213,15 @@ class MyFoodsController extends Controller
                 ->where('decision_flg', false)
                 ->get();
         }
-        $pertner = getPushClass::getPush();
+        // $pertner = getPushClass::getPush();
 
         Log::debug('カテゴリー' . $categories);
         $link = route('chat.list', 0);
 
 
 
-        return view('foods.safefood', compact('categories', 'foods', 'pertner', 'link'));
+        return view('foods.safefood', compact('categories', 'foods','link'));
+        // return view('foods.safefood', compact('categories', 'foods', 'pertner', 'link'));
     }
     //=======================================================
     //==========================PERTNERカテゴリー一覧=============================
@@ -236,7 +239,7 @@ class MyFoodsController extends Controller
 
        $all_food = Food::all();
 
-        $pertner = getPushClass::getPush();
+        // $pertner = getPushClass::getPush();
 
         //自分のID
         $u_id = session()->get('id');
@@ -269,7 +272,7 @@ class MyFoodsController extends Controller
 
         $category = Category::find($id);
         $sub_cat = SubCategory::where('parent_id', $category->api_id)->get();
-        $pertner = getPushClass::getPush();
+        // $pertner = getPushClass::getPush();
 
         Log::debug('store中身' . $stores);
 
@@ -287,7 +290,8 @@ class MyFoodsController extends Controller
         $contact_link = route('contact');
 
 
-        return view('foods.item_list', compact('stores', 'pertner', 'link', 'u_id', 'detail_link', 'edit_link', 'sub_cat', 'cat_id','about_link','rule_link','legal_link','privacy_link','contact_link'));
+        return view('foods.item_list', compact('stores',  'link', 'u_id', 'detail_link', 'edit_link', 'sub_cat', 'cat_id','about_link','rule_link','legal_link','privacy_link','contact_link'));
+        // return view('foods.item_list', compact('stores', 'pertner', 'link', 'u_id', 'detail_link', 'edit_link', 'sub_cat', 'cat_id','about_link','rule_link','legal_link','privacy_link','contact_link'));
     }
 
 
@@ -319,16 +323,18 @@ class MyFoodsController extends Controller
         $message_num = $messages->count();
 
         $root = route('like_list', $food->id);
-        $pertner = getPushClass::getPush();
+        // $pertner = getPushClass::getPush();
 
 
-        if ($pertner->isEmpty()) {
-            $link = route('chat.list', 0);
-        } else {
-            $link = route('chat.list', $pertner[0]->food_id);
-        }
+        // if ($pertner->isEmpty()) {
+        //     $link = route('chat.list', 0);
+        // } else {
+        //     $link = route('chat.list', $pertner[0]->food_id);
+        // }
+        $link = route('chat.list', 0);
         $user_id = session()->get('id');
-        return view('foods.fooddetail', compact('store', 'food', 'category', 'likes', 'like_one', 'message_num', 'sub_category', 'root', 'link', 'user_id', 'abater'));
+        // return view('foods.fooddetail', compact('store', 'food', 'category', 'likes', 'like_one', 'message_num', 'sub_category', 'root', 'link', 'user_id', 'abater'));
+        return view('foods.fooddetail', compact('store', 'food', 'category', 'likes', 'like_one', 'message_num', 'sub_category', 'link','root', 'user_id', 'abater'));
     }
     //=========================食材編集==============================
 
@@ -359,14 +365,15 @@ class MyFoodsController extends Controller
             ->join('address', 'stores.id', '=', 'address.store_id')
             ->where('address.store_id', $id)
             ->first();
-        $pertner = getPushClass::getPush();
+        // $pertner = getPushClass::getPush();
         $link = route('chat.list', 0);
         $foods = Food::where('store_id', $id)->get();
         $foods_num = $foods->count();
 
         Log::debug($store);
 
-        return view('foods.user_detail', compact('store', 'pertner', 'link', 'foods_num'));
+        return view('foods.user_detail', compact('store', 'foods_num','link'));
+        // return view('foods.user_detail', compact('store', 'pertner', 'link', 'foods_num'));
     }
 
 
@@ -382,17 +389,18 @@ class MyFoodsController extends Controller
             ->get();
         Log::debug($stores);
 
-        $pertner = getPushClass::getPush();
+        // $pertner = getPushClass::getPush();
 
 
-        if ($pertner->isEmpty()) {
-            $link = route('chat.list', 0);
-        } else {
-            $link = route('chat.list', $pertner[0]->food_id);
-        }
+        // if ($pertner->isEmpty()) {
+        //     $link = route('chat.list', 0);
+        // } else {
+        //     $link = route('chat.list', $pertner[0]->food_id);
+        // }
+        $link = route('chat.list', 0);
 
-
-        return view('foods.like_list', compact('stores', 'food', 'likes', 'pertner', 'link'));
+        return view('foods.like_list', compact('stores', 'food', 'likes','link'));
+        // return view('foods.like_list', compact('stores', 'food', 'likes', 'pertner', 'link'));
     }
     //=========================Prof edit==============================
     public function prof_edit_view()
@@ -417,14 +425,15 @@ class MyFoodsController extends Controller
     public function mypage_show()
     {
         $categories = Category::all();
-        $pertner = getPushClass::getPush();
-        // Log::debug('store中身'.$stores);
+        // $pertner = getPushClass::getPush();
+
         $u_id = session()->get('id');
-        if ($pertner->isEmpty()) {
-            $link = route('chat.list', 0);
-        } else {
-            $link = route('chat.list', $pertner[0]->food_id);
-        }
+        // if ($pertner->isEmpty()) {
+        //     $link = route('chat.list', 0);
+        // } else {
+        //     $link = route('chat.list', $pertner[0]->food_id);
+        // }
+        $link = route('chat.list', 0);
         $detail_link = route('item_detail', 0);
         $edit_link = route('item_edit_show', 0);
         $delete_link = route('delete_food', 0);
@@ -434,7 +443,8 @@ class MyFoodsController extends Controller
         $privacy_link = route('privacy');
         $contact_link = route('contact');
         
-        return view('foods.mypage', compact('pertner', 'link', 'detail_link', 'edit_link', 'delete_link', 'u_id','about_link','rule_link','legal_link','privacy_link','contact_link','categories'));
+        return view('foods.mypage', compact('detail_link', 'edit_link', 'delete_link', 'u_id','about_link','rule_link','legal_link','privacy_link','contact_link','categories','link'));
+        // return view('foods.mypage', compact('pertner', 'link', 'detail_link', 'edit_link', 'delete_link', 'u_id','about_link','rule_link','legal_link','privacy_link','contact_link','categories'));
     }
     
     //=========================利用規約など==============================
