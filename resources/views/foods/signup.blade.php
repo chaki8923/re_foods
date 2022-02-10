@@ -177,5 +177,5 @@
 </div>
 @endsection
 
-<script src="{{ asset('/js/post.js') }}" defer></script>
+<script src="js/post.js" defer></script>
 @include('layouts.script')

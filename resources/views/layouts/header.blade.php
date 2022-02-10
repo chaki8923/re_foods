@@ -19,8 +19,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css" rel="stylesheet">
     <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/mycrop.css') }}">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     
     <!-- Scripts -->
     <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
