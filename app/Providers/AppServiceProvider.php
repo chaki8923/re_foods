@@ -40,14 +40,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         
-        $pertner = DB::table('stores')
-            ->join('messages', 'stores.id', '=', 'messages.from_store')
-            ->select('*')
-            ->where('new_flg',true)
-            ->where('to_store',session()->get('id'))
-            ->groupBy('store_name')
-            ->get();
-
-            view()->share('pertner',$pertner);
+      
     }
 }
