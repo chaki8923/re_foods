@@ -27,6 +27,15 @@ Route::get('/signin', 'MyFoodsController@signin')->name('signin')->middleware('s
 Route::post('/signin', 'MyFoodsController@auth')->name('auth');
 //////////////////////////////////////////////////////////////////////////////
 
+///////////////////////////////パスワードリセット////////////////////////////////////
+Route::get('/pass_forget', 'RegisterController@forget')->name('forget');
+Route::post('/pass_forget', 'RegisterController@forget_mail')->name('forget_mail');
+Route::get('/reset_pass', 'RegisterController@reset')->name('reset');
+// 送信メール本文のプレビュー
+
+//////////////////////////////////////////////////////////////////////////////
+
+
 ///////////////////////////////食材登録画面////////////////////////////////////
 Route::post('/', 'MyFoodsController@register')->name('food_register');
 Route::post('/food_register', 'RegisterController@food_regist')->name('food_regist');

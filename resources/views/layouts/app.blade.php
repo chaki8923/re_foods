@@ -12,7 +12,7 @@
         <nav class="navbar navbar-expand-lg navbar-light  shadow-sm " style="z-index: 100;">
             <div class="container">
                 <a class="navbar-brand header-logo" href="{{ url('/') }}">
-                <img src="storage/images/logo.png" alt="ロゴ" class="main-logo">
+                <img src="/images/logo.png" alt="ロゴ" class="main-logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
