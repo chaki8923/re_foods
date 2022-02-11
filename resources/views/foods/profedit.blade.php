@@ -130,7 +130,7 @@
             <div class="form-group row">
               <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Your Image') }}</label>
               @isset($publicImagePath)
-              <img src="{{asset($publicImagePath)}}" name="">
+              <img src="{{$publicImagePath}}" name="">
               @endisset
               <div id="image-area">
                 <label for="image">
@@ -155,7 +155,6 @@
                     <div id="upload-demo" class="center-block"></div>
                   </div>
                   <div class="modal-footer">
-                    //キャンセル聞かない
                     <button type="button" class="modal-btn-cancel" data-dismiss="modal">キャンセル</button>
                     <button type="button" id="cropImageBtn" class="modal-bton-crop">決定</button>
                   </div>
@@ -178,5 +177,5 @@
 
 @endsection
 
-<script src="{{ asset('/js/post.js') }}" defer></script>
+<script src="/js/post.js" defer></script>
 @include('layouts.script')

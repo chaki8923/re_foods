@@ -63,3 +63,4 @@
     </div>
 </div>
 @endsection
+<script src="/js/post.js" defer></script>

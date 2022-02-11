@@ -7,7 +7,7 @@
 <div class="user-content">
   <div class="user-name">
     <div class="user-image">
-      <img src="{{asset($store->store_image)}}" alt="">
+      <img src="{{$store->store_image}}" alt="">
       <p>{{$store->store_name}}</p>
     </div>
     <div class="user-comment">
@@ -53,4 +53,4 @@
 
 @endsection
 
-<script src="{{asset('/js/project.js')}}" defer></script>
+<script src="/js/project.js" defer></script>

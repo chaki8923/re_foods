@@ -120,4 +120,4 @@
 @include('layouts.footer')
 @endsection
 
-<script src="{{ asset('/js/select.js') }}" defer></script>
+<script src="/js/select.js" defer></script>

@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SampleNotification;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -285,20 +286,27 @@ class RegisterController extends Controller
   public function forget_mail()
   {
   
-    
-
-    $token = mt_rand(1, 10);
-    for ($i = 0; $i < 8; $i++) {
-      $token .= mt_rand(1, 10);
-    }
     $store = Store::select('*')->where('email',request()->input('email'))->first();
-    $name = $store->store_name;
-    $text = $token;
-    Log::debug('token'.$text);
-    $to = request()->input('email');
-    Mail::to($to)->send(new SampleNotification($name, $text));
+  
+    if($store){
+      
+      $token = mt_rand(1, 10);
+      for ($i = 0; $i < 8; $i++) {
+        $token .= mt_rand(1, 10);
+      }
+      $name = $store->store_name;
+      $text = $token;
+      Log::debug('token'.$text);
+      $to = request()->input('email');
+      Mail::to($to)->send(new SampleNotification($name, $text));
+  
+      return redirect()->route('reset');
 
-    return redirect()->route('reset');
+      }else{
+        return redirect()->route('forget')->with('flash_message', __('登録されていないアドレスです'));
+      }
+      
+
   }
 
   //=======================================================

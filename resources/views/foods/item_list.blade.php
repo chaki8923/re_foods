@@ -12,5 +12,5 @@
 @include('layouts.loading')
 @endsection
 
-<script src="{{ asset('/js/project.js') }}" defer></script>
-<script src="{{ asset('/js/search.js') }}" defer></script>
+<script src="/js/project.js" defer></script>
+<script src="/js/search.js" defer></script>

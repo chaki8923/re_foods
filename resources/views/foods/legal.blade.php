@@ -44,5 +44,5 @@
 @include('layouts.footer')
 
 @endsection
-<script src="{{ asset('/js/project.js') }}" defer></script>
-<script src="{{ asset('/js/mypage.js') }}" defer></script>
+<script src="/js/project.js" defer></script>
+<script src="/js/mypage.js" defer></script>

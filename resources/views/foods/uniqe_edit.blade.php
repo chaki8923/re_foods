@@ -41,7 +41,7 @@
             <div class="form-group row">
               <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Your Image') }}</label>
               @isset($publicImagePath)
-              <img src="{{asset($publicImagePath)}}" name="">
+              <img src="{{$publicImagePath}}" name="">
               @endisset
               <div id="image-area">
                 <label for="image">
@@ -86,5 +86,5 @@
   </div>
 </div>
 @endsection
-<script src="{{ asset('/js/post.js') }}" defer></script>
+<script src="/js/post.js" defer></script>
 @include('layouts.script')

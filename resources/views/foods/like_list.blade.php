@@ -39,4 +39,4 @@
 
 </div>
 @endsection
-<script src="{{ asset('/js/project.js') }}" defer></script>
+<script src="/js/project.js" defer></script>

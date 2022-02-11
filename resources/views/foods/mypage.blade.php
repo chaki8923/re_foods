@@ -11,5 +11,5 @@
 @include('layouts.loading')
 @endsection
 <script src="https://unpkg.com/vue-router@3.1.5/dist/vue-router.js"></script>
-<script src="{{ asset('/js/project.js') }}" defer></script>
-<script src="{{ asset('/js/mypage.js') }}" defer></script>
+<script src="/js/project.js" defer></script>
+<script src="/js/mypage.js" defer></script>

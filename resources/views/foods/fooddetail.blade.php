@@ -7,29 +7,29 @@
   </div>
   <div class="item-container">
     @if($food->decision_flg)
-    <img src="{{asset('storage/images/decision.gif')}}" alt="" class="decision-img" >
+    <img src="/storage/images/decision.gif" alt="" class="decision-img" >
     @endif
     <div id="like">
       <like-component :food="{{$food}}" :food_id="{{$food->id}}" :like_flg_check="{{$food->likes}}" :like_num="{{$likes->count()}}" :like_one="{{$like_one->count()}}" root="{{$root}}" :likes="{{$likes}}" :user_id="{{$user_id}}">
       </like-component>
     </div>
     <div class="item-view">
-      <img src="{{asset('storage/images/'.$food->pic1)}}" alt="" class="js-main-view">
+      <img src="/storage/images/{{$food->pic1}}" alt="" class="js-main-view">
     </div>
     <div class="item-sub-view">
       <div class="sub-view js-click-changeView">
         @if($food->pic1)
-        <img src="{{asset('storage/images/'.$food->pic1)}}" alt="" class="js-img js-img-current">
+        <img src="/storage/images/{{$food->pic1}}" alt="" class="js-img js-img-current">
         @endif
       </div>
       <div class="sub-view js-click-changeView">
         @if($food->pic2)
-        <img src="{{asset('storage/images/'.$food->pic2)}}" alt="" class="js-img">
+        <img src="/storage/images/{{$food->pic2}}" alt="" class="js-img">
         @endif
       </div>
       <div class="sub-view js-click-changeView">
         @if($food->pic3)
-        <img src="{{asset('storage/images/'.$food->pic3)}}" alt="" class="js-img">
+        <img src="/storage/images/{{$food->pic3}}" alt="" class="js-img">
         @endif
       </div>
     </div>
@@ -43,7 +43,7 @@
   @if($food->comment)
   <div class="food-text">
     <div class="user-image">
-      <img src="{{asset($abater->store_image)}}" alt="">
+      <img src="{{$abater->store_image}}" alt="">
       <span>{{$abater->store_name}}</span>
     </div>
     <div class="food-text-area">
@@ -63,6 +63,6 @@
   @include('layouts.loading')
   @endsection
 
-  <script src="{{ asset('/js/project.js') }}" defer></script>
-  <script src="{{ asset('/js/decision.js') }}" defer></script>
-  <script src="{{ asset('/js/resipi.js') }}" defer></script>
+  <script src="/js/project.js" defer></script>
+  <script src="/js/decision.js" defer></script>
+  <script src="/js/resipi.js" defer></script>

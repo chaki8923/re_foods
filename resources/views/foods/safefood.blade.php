@@ -11,7 +11,7 @@
     <a href="{{route('item_list',$category->id)}}" class="card">
       <div class="card-header d-flex justify-content-between">{{$category->category_name}} <span>{{$foods[$category->id]->count()}}件</span></div>
       <div class="card-body category-card-body" style="height:215px;">
-        <img src="{{asset('images/'.$category->category_image)}}" alt="画像" width="100%">
+        <img src="/images/{{$category->category_image}}" alt="画像" width="100%">
       </div>
     </a>
   </div>
@@ -21,4 +21,4 @@
 </div>
 @include('layouts.footer')
 @endsection
-<script src="{{ asset('/js/project.js') }}" defer></script>
+<script src="/js/project.js" defer></script>

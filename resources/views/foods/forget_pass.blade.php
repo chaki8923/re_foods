@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div class="card-header">{{ __('Reset Pass') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -23,11 +23,11 @@
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                                @error('email')
+                                @if(session('result'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ session('result') }}</strong>
                                     </span>
-                                @enderror
+                               @endif
                             </div>
                         </div>
 
@@ -45,3 +45,4 @@
     </div>
 </div>
 @endsection
+<script src="/js/project.js" defer></script>

@@ -40,5 +40,5 @@
 <!-- @include('layouts.loading') -->
 @include('layouts.footer')
 @endsection
-<script src="{{ asset('/js/project.js') }}" defer></script>
+<script src="/js/project.js" defer></script>
 <!-- <script src="{{ asset('/js/chat_list.js') }}" defer></script> -->
