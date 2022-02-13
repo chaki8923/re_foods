@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIdentityProvidersTable extends Migration
+class CreateSubCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateIdentityProvidersTable extends Migration
      */
     public function up()
     {
-        Schema::create('identity_providers', function (Blueprint $table) {
+        Schema::create('sub_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('api_id');
+            $table->string('food_name');
+            $table->integer('parent_id');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateIdentityProvidersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('identity_providers');
+        Schema::dropIfExists('sub_categories');
     }
 }

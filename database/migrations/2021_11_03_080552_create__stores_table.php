@@ -16,9 +16,8 @@ class CreateStoresTable extends Migration
         Schema::create('stores', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('store_name');
-            $table->integer('add_id');
             $table->integer('post_number')->nullable();
-            $table->integer('tell_number')->nullable();
+            $table->integer('tell_number')->nullable();//編集
             $table->string('store_image');
             $table->timestamps();
         });

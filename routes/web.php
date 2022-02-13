@@ -25,6 +25,8 @@ Route::get('/signup', 'MyFoodsController@signup')->name('signup');
 Route::post('/signup', 'RegisterController@register')->name('register');
 Route::get('/signin', 'MyFoodsController@signin')->name('signin')->middleware('short');
 Route::post('/signin', 'MyFoodsController@auth')->name('auth');
+Route::get('/signin/{provider}', 'MyFoodsController@redirectToProvider')->where('social', 'google|facebook|line');
+Route::get('/signin/{provider}/callback', 'MyFoodsController@handleProviderCallback')->where('social', 'google|facebook|line');
 //////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////パスワードリセット////////////////////////////////////
@@ -137,3 +139,7 @@ Auth::routes([
     'login' => false,
 ]);
 //////////////////////////////////////////////////////////////////////////////
+//========================excelインポート===============================
+Route::get('/excel', 'RegisterController@excel')->name('excel');
+Route::post('/import', 'RegisterController@import')->name('import');
+//=======================================================

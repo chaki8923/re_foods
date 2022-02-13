@@ -21,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
         'Illuminate\Auth\Events\Authenticated' => [ //ここを追加しました
             'App\Listeners\LogAuthenticated',
         ],
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            'SocialiteProviders\\Line\\LineExtendSocialite@handle', //ここの二行を追記
+        ],
     ];
 
     /**

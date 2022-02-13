@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Address;
 use App\Category;
-use App\Events\LikeSignale;
 use App\Food;
 use App\Message;
 use App\Store;
@@ -18,7 +17,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
-use Symfony\Component\ErrorHandler\Debug;
+use App\IdentityProvider;
+use Exception;
+use Laravel\Socialite\Facades\Socialite;
+
 
 
 class MyFoodsController extends Controller
@@ -77,6 +79,56 @@ class MyFoodsController extends Controller
             return redirect()->route('signin')->with('flash_message', __('invalid erroe'));
         }
     }
+
+    //ソーシャルログイン
+    
+    public function redirectToProvider($social)
+    {
+        Log::debug('ソーシャル');
+        return Socialite::driver($social)->redirect();
+    }
+    
+
+    public function handleProviderCallback($provider)
+    {
+        try {
+            $user = Socialite::driver($provider)->user();
+        } catch (Exception $e) {
+            return redirect('/signin');
+        }
+
+        $authUser = $this->findOrCreateUser($user, $provider);
+        Auth::login($authUser, true);
+        return redirect($this->redirectTo);
+    }
+
+    public function findOrCreateUser($providerUser, $provider)
+    {
+        $account = IdentityProvider::whereProviderName($provider)
+                    ->whereProviderId($providerUser->getId())
+                    ->first();
+
+        if ($account) {
+            return $account->user;
+        } else {
+            $user = Store::whereEmail($providerUser->getEmail())->first();
+
+            if (!$user) {
+                $user = Store::create([
+                    'email' => $providerUser->getEmail(),
+                    'name'  => $providerUser->getName(),
+                ]);
+            }
+
+            $user->IdentityProviders()->create([
+                'provider_id'   => $providerUser->getId(),
+                'provider_name' => $provider,
+            ]);
+
+            return $user;
+        }
+    }
+
     //=======================================================
 
     //========================ログアウト===============================

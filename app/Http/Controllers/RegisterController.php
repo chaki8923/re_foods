@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use App\Imports\ExcelImport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 
 class RegisterController extends Controller
@@ -311,4 +314,16 @@ class RegisterController extends Controller
 
   //=======================================================
 
+  //========================excxel===============================
+  public function excel()
+  {
+
+    return view('foods.excel');
+  }
+  public function import()
+  {
+    Excel::import(new ExcelImport, request()->file('file'));
+    return back();
+  }
+  //=======================================================
 }
