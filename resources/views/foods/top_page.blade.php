@@ -7,6 +7,12 @@
       <h2>芽吹いた命、<br>努力の手、無駄にしない<span class="fs-5">。</span></h2>
       <p>作り手、そして買い手の双方の手助けを消費者が行う</p>
       <a href="{{route('signup')}}"><button class="btn btn-light start-btn w-75">無料で始める</button></a>
+      <div class="form-group row mt-2">
+        <label for="name" class="col-sm-4 col-form-label text-md-right " style="color:#fff;">Googleで簡単登録</label>
+        <div class="col-md-6">
+          <a href="{{ url('signin/google')}}" class="btn btn-danger w-75"><i class="fa-brands fa-google"></i> Google</a>
+        </div>
+      </div>
     </div>
     <a href="#" class="scroll text-white" style="text-decoration: none;"><span></span>Scroll</a>
   </section>
@@ -54,6 +60,12 @@
       <div class="panel-body text-center">
         <a href="{{route('signup')}}"><button class="btn btn-light start-btn w-75 m-auto">無料で始める</button></a>
         </p>
+      </div>
+      <div class="form-group row mt-2">
+        <label for="name" class="col-sm-4 col-form-label text-md-right " style="color:#fff;">Googleで簡単登録</label>
+        <div class="col-md-6">
+          <a href="{{ url('signin/google')}}" class="btn btn-danger w-75"><i class="fa-brands fa-google"></i> Google</a>
+        </div>
       </div>
     </div>
   </section>

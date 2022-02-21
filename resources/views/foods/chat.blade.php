@@ -9,5 +9,5 @@
     @enderror
   </div>
 @endsection
-<script src="/js/chat.js'" defer></script>
+<script src="/js/chat.js" defer></script>
 

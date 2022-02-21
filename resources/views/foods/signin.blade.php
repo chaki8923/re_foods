@@ -70,10 +70,9 @@
         </div>
     </div>
     <div class="form-group row mt-5">
-        <label for="name" class="col-sm-4 col-form-label text-md-right">SNSログイン</label>
+        <label for="name" class="col-sm-4 col-form-label text-md-right ">Googleでログイン</label>
         <div class="col-md-6">
-            <a href="{{ url('signin/google')}}" class="btn btn-danger"><i class="fa-brands fa-google"></i> Google</a>
-            <a href="{{ url('signin/line')}}" class="btn btn-success"><i class="fa-brands fa-line"></i> LINE</a>
+            <a href="{{ url('signin/google')}}" class="btn btn-danger w-75 d-block"><i class="fa-brands fa-google"></i> Google</a>
         </div>
     </div>
 </div>

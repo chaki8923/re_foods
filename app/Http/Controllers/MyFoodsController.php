@@ -18,7 +18,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use App\IdentityProvider;
+use App\Mail\ContactMail;
 use Exception;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Socialite\Facades\Socialite;
 
 
@@ -61,7 +63,7 @@ class MyFoodsController extends Controller
 
 
         if (count($store) === 0) {
-            return redirect()->route('signin')->with('flash_message', __('invalid error'));
+            return redirect()->route('signin')->with('flash_message', __('入力内容に誤りがあります'));
         }
 
         if (Hash::check($request->password, $store[0]->password)) {
@@ -76,47 +78,74 @@ class MyFoodsController extends Controller
 
         } else {
 
-            return redirect()->route('signin')->with('flash_message', __('invalid erroe'));
+            return redirect()->route('signin')->with('flash_message', __('入力内容に誤りがあります'));
         }
     }
 
     //ソーシャルログイン
-    
+
     public function redirectToProvider($social)
     {
         Log::debug('ソーシャル');
         return Socialite::driver($social)->redirect();
     }
-    
+
 
     public function handleProviderCallback($provider)
     {
         try {
+            Log::debug('handleProviderCallbackです');
             $user = Socialite::driver($provider)->user();
+            $store  = Store::select('*')->where('email', $user['email'])->first();
+            Log::debug(print_r($user, true));
+
+            session(['store_name' => $store->store_name]);
+            session(['id' => $store->id]);
+
+            return redirect()->route('action', $store->id)->with('flash_message', __('ログインしました。'));
         } catch (Exception $e) {
-            return redirect('/signin');
+
+
+            redirect()->route('forget')->with('flash_message', __('新規登録してください'));
         }
 
         $authUser = $this->findOrCreateUser($user, $provider);
-        Auth::login($authUser, true);
-        return redirect($this->redirectTo);
+        if ($authUser !== null) {
+            Log::debug('管理者' . $authUser);
+            $store = Store::select('*')->where('id', $authUser['id'])->first();
+            session(['store_name' => $store->store_name]);
+            session(['id' => $store->id]);
+
+            return redirect()->route('action', $store->id)->with('flash_message', __('ログインしました。'));
+        }
+        // Auth::login($authUser, true);
+
+
     }
 
     public function findOrCreateUser($providerUser, $provider)
     {
         $account = IdentityProvider::whereProviderName($provider)
-                    ->whereProviderId($providerUser->getId())
-                    ->first();
+            ->whereProviderId($providerUser->getId())
+            ->first();
 
         if ($account) {
+            Log::debug('アカウントあり');
             return $account->user;
         } else {
             $user = Store::whereEmail($providerUser->getEmail())->first();
 
             if (!$user) {
+                Log::debug('ユーザーなし');
+                $address = new Address;
                 $user = Store::create([
                     'email' => $providerUser->getEmail(),
-                    'name'  => $providerUser->getName(),
+                    'store_name'  => $providerUser->getName(),
+                ]);
+                Log::debug('新ユーザー' . $user);
+                Log::debug('新ユーザーID' . $user['id']);
+                Address::create([
+                    'store_id' => $user['id']
                 ]);
             }
 
@@ -145,71 +174,68 @@ class MyFoodsController extends Controller
 
     public function action($id)
     {
-        
-        $today = Carbon::now();//現在日時
+
+        $today = Carbon::now(); //現在日時
         $limit = new Carbon('+1 day');
-        $del_foods = Food::where('decision_flg',true)->get();//今より3日前に成約した食材取得
+        $del_foods = Food::where('decision_flg', true)->get(); //今より3日前に成約した食材取得
         $foods = Food::all();
 
-     
-        
-        foreach($del_foods as $val){
-            Log::debug('削除食材'.$del_foods);
+
+
+        foreach ($del_foods as $val) {
+            Log::debug('削除食材' . $del_foods);
 
             //成約から３日経った、または賞味期限が３日前になったら削除
-                if($val->decision_at <= $today){
-                    if($val->pic1){
-                        
-                        Storage::disk('public')->delete('images/' . $val->pic1);
-                    }
-                    if($val->pic2){
+            if ($val->decision_at <= $today) {
+                if ($val->pic1) {
 
-                        Storage::disk('public')->delete('images/' . $val->pic2);
-                    }
-                    if($val->pic3){
-
-                        Storage::disk('public')->delete('images/' . $val->pic3);
-                    }
-                    Like::where('food_id',$val->id)->where('store_id',session()->get('id'))->delete();
-                    Message::where('food_id',$val->id)->delete();
-                    $val->delete();
-                    
+                    Storage::disk('public')->delete('images/' . $val->pic1);
                 }
-            
-        }
-   
-        foreach($foods as $val){
+                if ($val->pic2) {
 
-   
-                if($val->loss_limit <= $limit){
-                    if($val->pic1){
-
-                        Storage::disk('public')->delete('images/' . $val->pic1);
-                    }
-                    if($val->pic2){
-
-                        Storage::disk('public')->delete('images/' . $val->pic2);
-                    }
-                    if($val->pic3){
-
-                        Storage::disk('public')->delete('images/' . $val->pic3);
-                    }
-                    Like::where('food_id',$val->id)->where('store_id',session()->get('id'))->delete();
-                    Message::where('food_id',$val->id)->delete();
-                    $val->delete();
-                
+                    Storage::disk('public')->delete('images/' . $val->pic2);
                 }
-            
+                if ($val->pic3) {
+
+                    Storage::disk('public')->delete('images/' . $val->pic3);
+                }
+                Like::where('food_id', $val->id)->where('store_id', session()->get('id'))->delete();
+                Message::where('food_id', $val->id)->delete();
+                $val->delete();
+            }
         }
-        
+
+        foreach ($foods as $val) {
+
+
+            if ($val->loss_limit <= $limit) {
+                if ($val->pic1) {
+
+                    Storage::disk('public')->delete('images/' . $val->pic1);
+                }
+                if ($val->pic2) {
+
+                    Storage::disk('public')->delete('images/' . $val->pic2);
+                }
+                if ($val->pic3) {
+
+                    Storage::disk('public')->delete('images/' . $val->pic3);
+                }
+                Like::where('food_id', $val->id)->where('store_id', session()->get('id'))->delete();
+                Message::where('food_id', $val->id)->delete();
+                $val->delete();
+            }
+        }
+
         $new_msg = Message::where('new_flg', true)->groupBy('from_store')->get();
 
 
         $store = Store::find($id);
         $my_food_id = Food::where('store_id', $id)->select('id')->get();
+        $address = Address::where('store_id', $id)->first();
 
         $pertner = getPushClass::getPush();
-        Log::debug('パートナー中身'.$pertner);
+        Log::debug('パートナー中身' . $pertner);
         $detail_link = route('item_detail', 0);
 
         if ($pertner->isEmpty()) {
@@ -217,9 +243,9 @@ class MyFoodsController extends Controller
         } else {
             $link = route('chat.list', $pertner[0]->food_id);
         }
-    
-      
-        
+
+
+
 
         $likes = Like::where('new_flg', true)
             ->join('stores', 'likes.store_id', '=', 'stores.id')
@@ -230,8 +256,8 @@ class MyFoodsController extends Controller
         Log::debug('likes' . $likes);
 
 
-       
-        return view('foods.action', compact('store', 'foods', 'new_msg', 'pertner', 'link', 'my_food_id', 'likes', 'detail_link'));
+
+        return view('foods.action', compact('store', 'foods', 'new_msg', 'pertner', 'link', 'my_food_id', 'likes', 'detail_link', 'address'));
     }
 
 
@@ -259,11 +285,12 @@ class MyFoodsController extends Controller
 
         $categories = Category::all();
         $catNum = $categories->count();
+        $address = Address::where('store_id', session()->get('id'))->first();
 
         $foods = [];
         for ($i = 1; $i <= $catNum; $i++) {
             $foods[$i] = Food::where('category_id', $i)
-                ->where('decision_flg', false)
+                ->where('decision_flg', false)->where('address', $address->address)
                 ->get();
         }
         $pertner = getPushClass::getPush();
@@ -281,15 +308,15 @@ class MyFoodsController extends Controller
     {
 
         $foods = Food::where('store_id', $id)
-        ->join('categories', 'categories.id', 'foods.category_id')
-        ->select('category_id','category_name','category_image')
-        ->selectRaw('COUNT(category_id) as count_cat')
-        ->groupBy('foods.category_id')
-        ->get();
+            ->join('categories', 'categories.id', 'foods.category_id')
+            ->select('category_id', 'category_name', 'category_image')
+            ->selectRaw('COUNT(category_id) as count_cat')
+            ->groupBy('foods.category_id')
+            ->get();
 
         $catNum = $foods->count();
 
-       $all_food = Food::all();
+        $all_food = Food::all();
 
         $pertner = getPushClass::getPush();
 
@@ -302,7 +329,7 @@ class MyFoodsController extends Controller
 
 
 
-        return view('foods.pertner_foods', compact('foods','all_food', 'pertner', 'link', 'u_id', 'p_id'));
+        return view('foods.pertner_foods', compact('foods', 'all_food', 'pertner', 'link', 'u_id', 'p_id'));
     }
     //=======================================================
 
@@ -311,6 +338,7 @@ class MyFoodsController extends Controller
     {
         //最後に下記コードを検索条件に加える
         $address = Address::where('store_id', session()->get('id'))->first();
+
         $u_id = session()->get('id');
         //店舗、住所、食材、サブカテゴリーjoin
         $stores = DB::table('stores')
@@ -320,6 +348,7 @@ class MyFoodsController extends Controller
             ->select('store_name', 'foods.id', 'foods.store_id', 'sub_categories.food_name', 'foods.plice', 'foods.loss_limit', 'foods.pic1', 'sub_categories.api_id', 'foods.category_id')
             ->where('category_id', $id)
             ->where('decision_flg', false)
+            ->where('foods.address', $address->address)
             ->get();
 
         $category = Category::find($id);
@@ -342,8 +371,8 @@ class MyFoodsController extends Controller
         $contact_link = route('contact');
 
 
-       
-        return view('foods.item_list', compact('stores', 'pertner', 'link', 'u_id', 'detail_link', 'edit_link', 'sub_cat', 'cat_id','about_link','rule_link','legal_link','privacy_link','contact_link'));
+
+        return view('foods.item_list', compact('stores', 'pertner', 'link', 'u_id', 'detail_link', 'edit_link', 'sub_cat', 'cat_id', 'about_link', 'rule_link', 'legal_link', 'privacy_link', 'contact_link'));
     }
 
 
@@ -383,10 +412,9 @@ class MyFoodsController extends Controller
         } else {
             $link = route('chat.list', $pertner[0]->food_id);
         }
-      
+
         $user_id = session()->get('id');
         return view('foods.fooddetail', compact('store', 'food', 'category', 'likes', 'like_one', 'message_num', 'sub_category', 'root', 'link', 'user_id', 'abater'));
-        
     }
     //=========================食材編集==============================
 
@@ -423,8 +451,8 @@ class MyFoodsController extends Controller
         $foods_num = $foods->count();
 
         Log::debug($store);
-        
-       
+
+
         return view('foods.user_detail', compact('store', 'pertner', 'link', 'foods_num'));
     }
 
@@ -449,9 +477,9 @@ class MyFoodsController extends Controller
         } else {
             $link = route('chat.list', $pertner[0]->food_id);
         }
-      
 
-       
+
+
         return view('foods.like_list', compact('stores', 'food', 'likes', 'pertner', 'link'));
     }
     //=========================Prof edit==============================
@@ -472,7 +500,7 @@ class MyFoodsController extends Controller
         return view('foods.uniqe_edit', compact('store'));
     }
     //=========================Mypage==============================
-    
+
     //気になるもの、成約済み、大カテゴリーをタブ切り替え
     public function mypage_show()
     {
@@ -494,30 +522,48 @@ class MyFoodsController extends Controller
         $legal_link = route('legal');
         $privacy_link = route('privacy');
         $contact_link = route('contact');
-        
-      
-        return view('foods.mypage', compact('pertner', 'link', 'detail_link', 'edit_link', 'delete_link', 'u_id','about_link','rule_link','legal_link','privacy_link','contact_link','categories'));
+
+
+        return view('foods.mypage', compact('pertner', 'link', 'detail_link', 'edit_link', 'delete_link', 'u_id', 'about_link', 'rule_link', 'legal_link', 'privacy_link', 'contact_link', 'categories'));
     }
-    
+
     //=========================利用規約など==============================
-    
-    public function rule(){
+
+    public function rule()
+    {
         return view('foods.rule');
     }
-    
-    public function about(){
+
+    public function about()
+    {
         return view('foods.about');
     }
-    
-    public function legal(){
+
+    public function legal()
+    {
         return view('foods.legal');
     }
-    
-    public function privacy(){
+
+    public function privacy()
+    {
         return view('foods.privacy');
     }
     //=========================問い合わせ==============================
-    public function contact(){
+    public function contact()
+    {
         return view('foods.contact');
+    }
+    public function sendmail()
+    {
+
+
+        $to = 'konkuriitonouenokareha128@gmail.com';
+        $name = request()->input('name');
+        $email = request()->input('email');
+        $text = request()->input('comment');
+
+        Mail::to($to)->send(new ContactMail($text, $name, $email));
+
+        return redirect()->route('contact')->with('flash_message', __('メッセージを送信しました。'));
     }
 }

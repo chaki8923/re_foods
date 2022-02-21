@@ -31,9 +31,9 @@
     <th>電話番号</th>
     @if($store->tell_number)
     <td>{{$store->tell_number}}<a href="tel:{{$store->tell_nember}}" class="btn btn-info ml-5 text-white">電話をかける<i class="fas fa-phone-square tell-icon"></i></a></td>
-    @endif
+    @else
     <td>登録されていません</td>
-    
+    @endif
   </tr>
 </table>
 </div>

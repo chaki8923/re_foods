@@ -47,7 +47,7 @@
                         </li>
                         
                         @endif
-                        @if (!Session::has('email'))
+                        @if (!Session::has('store_name'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('signin') }}">{{ __('Login') }}</a>
                         </li>
@@ -72,6 +72,7 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
+                                <a class="dropdown-item" href="{{ route('withdrawal') }}">{{ __('退会') }}</a>
                             </div>
                         </li>
                         @endif

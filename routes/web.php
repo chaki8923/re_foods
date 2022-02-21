@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 ///////////////////////////////TOP PAGE////////////////////////////////////
-Route::get('/', 'MyFoodsController@top_page')->name('top_page');;
+Route::get('/', 'MyFoodsController@top_page')->name('top_page');
 //////////////////////////////////////////////////////////////////////////////
 
 
@@ -33,6 +33,7 @@ Route::get('/signin/{provider}/callback', 'MyFoodsController@handleProviderCallb
 Route::get('/pass_forget', 'RegisterController@forget')->name('forget');
 Route::post('/pass_forget', 'RegisterController@forget_mail')->name('forget_mail');
 Route::get('/reset_pass', 'RegisterController@reset')->name('reset');
+Route::post('/reset_pass', 'RegisterController@reset_mail')->name('reset_mail');
 // 送信メール本文のプレビュー
 
 //////////////////////////////////////////////////////////////////////////////
@@ -113,7 +114,7 @@ Route::get('/get_post', 'AxiosController@get_post')->name('get_post');
 Route::get('/uniqe_edit', 'MyFoodsController@uniqe_edit_view')->name('uniqe_show');
 Route::post('/uniqe_edit', 'RegisterController@uniqe_edit')->name('uniqe_edit');
 Route::post('/prof_edit', 'RegisterController@prof_edit')->name('prof_edit');
-Route::post('/prof_edit', 'RegisterController@prof_edit')->name('prof_edit');
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -129,6 +130,7 @@ Route::get('/legal', 'MyFoodsController@legal')->name('legal');
 
 /////////////////////////////////////////お問い合わせフォーム/////////////////////////////////////////////
 Route::get('/contact', 'MyFoodsController@contact')->name('contact');
+Route::post('/contact', 'MyFoodsController@sendmail')->name('sendmail');
 
 
 /////////////////////////////////////郵便番号検索/////////////////////////////////////////
@@ -138,6 +140,13 @@ Auth::routes([
     'register' => false ,
     'login' => false,
 ]);
+
+
+//=========================退会==============================
+Route::get('/withdrawal', 'RegisterController@withdrawal')->name('withdrawal');
+Route::post('/withdrawal', 'RegisterController@drawal')->name('drawal');
+
+//=======================================================
 //////////////////////////////////////////////////////////////////////////////
 //========================excelインポート===============================
 Route::get('/excel', 'RegisterController@excel')->name('excel');
