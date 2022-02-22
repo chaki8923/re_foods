@@ -5,7 +5,7 @@
   <section id="section1" class="key-view section" style="background-image: url('images/main_bc.jpg');">
     <div class="key-view--panel">
       <h2>芽吹いた命、<br>努力の手、無駄にしない<span class="fs-5">。</span></h2>
-      <p>作り手、そして買い手の双方の手助けを消費者が行う</p>
+      <p>作り手、そして買い手の双方の手助けを<br class="page-text">消費者が行う</p>
       <a href="{{route('signup')}}"><button class="btn btn-light start-btn w-75">無料で始める</button></a>
       <div class="form-group row mt-2">
         <label for="name" class="col-sm-4 col-form-label text-md-right " style="color:#fff;">Googleで簡単登録</label>

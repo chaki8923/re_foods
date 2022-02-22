@@ -205,6 +205,7 @@ body {
 
 @media screen and (max-width: 590px) {
   .key-view--panel {
+    top: 10%;
     width: 100%;
     left: 50%;
     text-align: center;
@@ -220,6 +221,16 @@ body {
 .key-view--panel p {
   color: #fff;
   font-size: 1rem;
+}
+
+.page-text {
+  display: none;
+}
+
+@media screen and (max-width: 590px) {
+  .page-text {
+    display: block;
+  }
 }
 
 .start-btn a {

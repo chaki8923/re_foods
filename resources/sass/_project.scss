@@ -19,6 +19,7 @@ body {
     top: 50%;
     right: 3rem;
     @include mq(sp) {
+      top: 10%;
       width: 100%;
       left: 50%;
       text-align: center;
@@ -32,6 +33,13 @@ body {
       color: #fff;
       font-size: 1rem;
     }
+  }
+}
+
+.page-text{
+  display: none;
+  @include mq(sp){
+    display: block;
   }
 }
 
