@@ -223,6 +223,23 @@ body {
   font-size: 1rem;
 }
 
+@media screen and (max-width: 590px) {
+  .google-txt {
+    text-align: center;
+  }
+}
+
+.google-area {
+  text-align: center;
+}
+
+@media screen and (max-width: 590px) {
+  .google-btn {
+    display: block;
+    margin: auto;
+  }
+}
+
 .page-text {
   display: none;
 }

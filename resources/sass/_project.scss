@@ -36,6 +36,22 @@ body {
   }
 }
 
+.google-txt{
+  @include mq(sp){
+    text-align: center;
+  }
+}
+.google-area{
+  text-align: center;
+}
+
+.google-btn{
+  @include mq(sp){
+    display: block;
+    margin: auto;
+  }
+
+}
 .page-text{
   display: none;
   @include mq(sp){
