@@ -27,7 +27,7 @@
             width="100%"
             height="200px"
           />
-           <img :src="'/storage/images/decision.gif'" alt="" class="decision-icon" v-show="store.decision_flg">
+           <img :src="'/images/decision.gif'" alt="" class="decision-icon" v-show="store.decision_flg">
           <div class="card-body" style="height: 215px">
             <h4 class="card-title w-100">{{ store.store_name }}</h4>
             <p class="">価格:{{ store.plice.toLocaleString() }}</p>

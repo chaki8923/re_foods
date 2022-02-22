@@ -23,7 +23,8 @@
             
             <th>{{$loop->iteration}}</th>
             <td>{{$user->store_name}}</td>
-            <td><a href="/item_detail/{{$food->id}}/{{$user->from_store}}/chat/"><button type="button" class="btn btn-primary">Chat</button></a></td>
+         
+            <td><a href="{{route('chat',['id'=>$food->id,'kind'=>$user->from_store])}}"><button type="button" class="btn btn-primary">Chat</button></a></td>
             <td class="user-detail-btn"><a href="{{route('user_detail',$user->from_store)}}"><button type="button" class="btn btn-primary"><span class="responsibe">ユーザー</span>情報</button></a></td>
             
             @if($user->new_flg)

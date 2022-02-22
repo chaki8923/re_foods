@@ -28,7 +28,7 @@
             height="200px"
           />
           <img
-            :src="'/storage/images/decision.gif'"
+            :src="'/images/decision.gif'"
             alt=""
             class="decision-icon"
             v-show="list.decision_flg"

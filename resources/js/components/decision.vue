@@ -47,7 +47,7 @@ export default {
       this.modal_flg = false;
       const id = u_id;
       const food_id = f_id;
-      const array = ["/push_decision/", id, "/", food_id];
+      const array = ["https://chakiinfra.com/push_decision/", id, "/", food_id];
       const path = array.join("");
       axios
         .post(path)
