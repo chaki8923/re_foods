@@ -141,7 +141,7 @@ __webpack_require__.r(__webpack_exports__);
       this.modal_flg = false;
       var id = u_id;
       var food_id = f_id;
-      var array = ["/push_decision/", id, "/", food_id];
+      var array = ["https://chakiinfra.com/push_decision/", id, "/", food_id];
       var path = array.join("");
       axios.post(path).then(function (res) {
         console.log(res.data);

@@ -549,7 +549,7 @@ var render = function () {
                       },
                     ],
                     staticClass: "decision-icon",
-                    attrs: { src: "/storage/images/decision.gif", alt: "" },
+                    attrs: { src: "/images/decision.gif", alt: "" },
                   }),
                   _vm._v(" "),
                   _c(
