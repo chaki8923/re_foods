@@ -54,7 +54,7 @@ class AxiosController extends Controller
                     'new_flg' => 1,
                 )
             );
-
+            
             event(new LikeSignale($like));
         }
     }

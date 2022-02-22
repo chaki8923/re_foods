@@ -25,7 +25,8 @@
         @foreach($stores as $key => $user)
         <tr>
             <td>{{$user->store_name}}</td>
-            <td><a href="/item_detail/{{$food->id}}/{{$user->store_id}}/chat/"><button type="button" class="btn btn-primary">MAIL</button></a></td>
+      
+            <td><a href="{{route('chat',['id'=>$food->id,'kind'=>$user->store_id])}}"><button type="button" class="btn btn-primary">MAIL</button></a></td>
             <td class="user-detail-btn"><a href="{{route('user_detail',$user->store_id)}}"><button type="button" class="btn btn-primary"><span class="responsibe">ユーザー</span>情報</button></a></td>
             @if($user->new_flg)
             <td><h3 class="badge bg-danger text-white">NEW</h3></td>

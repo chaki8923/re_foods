@@ -374,8 +374,9 @@ class RegisterController extends Controller
 
     $id = session()->get('id');
     $account = IdentityProvider::where('store_id',$id)->first();
-    Log::debug('アイデンティティー'.$account);
-    $account->delete();
+    if($account->store_id){
+      $account->delete();
+    }
     $store = Store::find($id);
     $foods = Food::where('store_id', $store->id)->get();
     foreach ($foods as $val) {
