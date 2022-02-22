@@ -17,7 +17,7 @@ $(function(){
 
   $(window).on('click',function(e){
     if(!$(e.target).closest('.dropdown-toggle').length){
-      $('.dropdown-menu').removeClass('show');
+      $('.dropdown-menu').hide();
     }
   });
   
