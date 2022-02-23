@@ -118,7 +118,7 @@ export default {
       axios
         .get(path)
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
 
           this.lists = res.data;
         })

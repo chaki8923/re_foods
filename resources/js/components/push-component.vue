@@ -56,7 +56,7 @@ export default {
     },
     get_food_id(){
       this.detail_id = this.id;
-      console.log(this.detail_id);
+      // console.log(this.detail_id);
       
     }
    
@@ -83,12 +83,12 @@ export default {
           this.my_food_id.forEach(element => {
             if(element['id'] === e['like']['food_id']){
               this.like_flg = true;
-              console.log('いいね'); 
+              // console.log('いいね'); 
             }
           });
         }
         
-        console.log(this.my_food_id);
+        // console.log(this.my_food_id);
       
         
        

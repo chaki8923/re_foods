@@ -568,6 +568,7 @@
   position: absolute;
   top: 5em;
   right: 1em;
+  
   li{
     background-color: #fff;
     border: 1px solid $blue;
@@ -597,7 +598,7 @@
   top: 5em;
   right: 15px;
   list-style: none;
-  @include mq(md){
+  @include mq(sp){
     top: 14em;
   }
   li{

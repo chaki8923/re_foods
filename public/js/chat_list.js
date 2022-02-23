@@ -2122,7 +2122,7 @@ var app8 = new Vue({
     get_reserve: function get_reserve() {
       var _this = this;
 
-      console.log('click');
+      // console.log('click');
       var path = "/all_reserve_list";
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(path).then(function (res) {
         _this.lists = res.data['list'];

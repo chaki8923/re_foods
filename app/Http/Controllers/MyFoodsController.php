@@ -451,7 +451,7 @@ class MyFoodsController extends Controller
         $foods = Food::where('store_id', $id)->get();
         $foods_num = $foods->count();
 
-        Log::debug($store);
+        Log::debug('店舗情報'.$store);
 
 
         return view('foods.user_detail', compact('store', 'pertner', 'link', 'foods_num'));

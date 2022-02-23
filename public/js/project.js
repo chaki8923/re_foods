@@ -1955,8 +1955,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     get_food_id: function get_food_id() {
-      this.detail_id = this.id;
-      console.log(this.detail_id);
+      this.detail_id = this.id; // console.log(this.detail_id);
     }
   },
   mounted: function mounted() {
@@ -1979,13 +1978,11 @@ __webpack_require__.r(__webpack_exports__);
       if (_this2.my_food_id) {
         _this2.my_food_id.forEach(function (element) {
           if (element['id'] === e['like']['food_id']) {
-            _this2.like_flg = true;
-            console.log('いいね');
+            _this2.like_flg = true; // console.log('いいね'); 
           }
         });
-      }
+      } // console.log(this.my_food_id);
 
-      console.log(_this2.my_food_id);
     });
   }
 });

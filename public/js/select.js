@@ -55782,10 +55782,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 $(function () {
-  $('#pic1').on('click', function () {
-    console.log('aaaa');
-  });
-
   var _loop = function _loop(i) {
     $(".pic-preview".concat(i)).on('click', function () {
       $(".input-file".concat(i)).click();
@@ -55868,7 +55864,6 @@ var app3 = new Vue({
 
         switch (id) {
           case "0":
-            console.log('0');
             _this.category = _this.all;
             break;
 
@@ -55941,7 +55936,6 @@ var app3 = new Vue({
 
       switch (id) {
         case "0":
-          console.log('0');
           this.category = this.all;
           break;
 

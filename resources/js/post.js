@@ -9,10 +9,7 @@ $(function(){
     
   });
 
-  $('.js-comment').on('keydown',function(){
-    console.log('aaa');
-    
-  })
+
   
       $('.item-view').find('.js-main-view').addClass('fadeIn');
       $('.js-img-current').addClass('active');
@@ -47,7 +44,17 @@ $(function(){
         $('.tab-item').removeClass('active');
         $(this).addClass('active');
         
-      })
+      });
+
+
+
+      //テキストカウント
+      $('.js-comment').on('keyup',function(){
+        var text_count = $(this).val().replace(/[\n\s　]/g, "").length;
+        $('.js-text-count').text(text_count);
+        
+        
+      });
    
      
   });
@@ -65,7 +72,6 @@ new Vue({
   methods:{
       onClick: function() {
           
-        console.log('click');
         
           const url = '/ajax/postal_search?'+ [
               'first_code='+ this.firstCode,

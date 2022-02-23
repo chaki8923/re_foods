@@ -28,7 +28,7 @@ class FoodValidation extends FormRequest
             'category_id'=>'integer|required',
             'loss_limit'=>'date|required|after:tomorrow',
             'pic1'=>'required|file|max:5000|mimes:jpeg,png,jpg,gif',
-            'comment'=>'string|max:255',
+            'comment'=>'string|max:255|nullable',
             // 'pic2'=>'string|nullable',
             // 'pic3'=>'string|nullable',
         

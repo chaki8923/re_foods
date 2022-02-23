@@ -247,6 +247,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -284,6 +290,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get(path).then(function (res) {
         _this.lists = res.data["page"];
         _this.pageNum = res.data["all"];
+        console.log(res.data['all']);
 
         _this.pageNum.map(function (item, i) {
           item["page_id"] = i + 1;
@@ -448,7 +455,7 @@ __webpack_require__.r(__webpack_exports__);
     getPage: function getPage() {
       var _this3 = this;
 
-      console.log(thi.pageNum);
+      // console.log(this.pageNum);
       return this.pageNum.filter(function (item) {
         return item.index <= _this3.getPage;
       });
@@ -719,33 +726,68 @@ var render = function () {
       ? _c(
           "ul",
           { staticClass: "pagenation dec" },
-          _vm._l(_vm.pageNum, function (page, index) {
-            return _c(
+          [
+            _c(
               "li",
               {
                 directives: [
                   {
                     name: "show",
                     rawName: "v-show",
-                    value:
-                      index + 1 <= Math.ceil(_vm.pageNum.length / _vm.parPage),
-                    expression:
-                      "index + 1 <= Math.ceil(pageNum.length / parPage)",
+                    value: _vm.parPage < _vm.pageNum.length,
+                    expression: "parPage <  pageNum.length",
                   },
                 ],
-                key: page.index,
-                staticClass: "page-list",
-                class: { active: page.click_flg },
-                on: {
-                  click: function ($event) {
-                    return _vm.decision_paging(index + 1)
+                on: { click: _vm.prev },
+              },
+              [_c("i", { staticClass: "fas fa-chevron-left arrow" })]
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.pageNum, function (page, index) {
+              return _c(
+                "li",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value:
+                        index + 1 <=
+                        Math.ceil(_vm.pageNum.length / _vm.parPage),
+                      expression:
+                        "index + 1 <= Math.ceil(pageNum.length / parPage)",
+                    },
+                  ],
+                  key: page.index,
+                  staticClass: "page-list",
+                  class: { active: page.click_flg },
+                  on: {
+                    click: function ($event) {
+                      return _vm.decision_paging(index + 1)
+                    },
                   },
                 },
+                [_vm._v("\n      " + _vm._s(index + 1) + "\n    ")]
+              )
+            }),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.parPage < _vm.pageNum.length,
+                    expression: "parPage <  pageNum.length",
+                  },
+                ],
+                on: { click: _vm.next },
               },
-              [_vm._v("\n      " + _vm._s(index + 1) + "\n    ")]
-            )
-          }),
-          0
+              [_c("i", { staticClass: "fas fa-chevron-right arrow" })]
+            ),
+          ],
+          2
         )
       : _vm._e(),
     _vm._v(" "),
@@ -753,33 +795,68 @@ var render = function () {
       ? _c(
           "ul",
           { staticClass: "pagenation" },
-          _vm._l(_vm.pageNum, function (page, index) {
-            return _c(
+          [
+            _c(
               "li",
               {
                 directives: [
                   {
                     name: "show",
                     rawName: "v-show",
-                    value:
-                      index + 1 <= Math.ceil(_vm.pageNum.length / _vm.parPage),
-                    expression:
-                      "index + 1 <= Math.ceil(pageNum.length / parPage)",
+                    value: _vm.parPage < _vm.pageNum.length,
+                    expression: "parPage <  pageNum.length",
                   },
                 ],
-                key: page.id,
-                staticClass: "page-list",
-                class: { active: page.click_flg },
-                on: {
-                  click: function ($event) {
-                    return _vm.like_paging(index + 1)
+                on: { click: _vm.prev },
+              },
+              [_c("i", { staticClass: "fas fa-chevron-left arrow" })]
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.pageNum, function (page, index) {
+              return _c(
+                "li",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value:
+                        index + 1 <=
+                        Math.ceil(_vm.pageNum.length / _vm.parPage),
+                      expression:
+                        "index + 1 <= Math.ceil(pageNum.length / parPage)",
+                    },
+                  ],
+                  key: page.id,
+                  staticClass: "page-list",
+                  class: { active: page.click_flg },
+                  on: {
+                    click: function ($event) {
+                      return _vm.like_paging(index + 1)
+                    },
                   },
                 },
+                [_vm._v("\n      " + _vm._s(index + 1) + "\n    ")]
+              )
+            }),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.parPage < _vm.pageNum.length,
+                    expression: "parPage <  pageNum.length",
+                  },
+                ],
+                on: { click: _vm.next },
               },
-              [_vm._v("\n      " + _vm._s(index + 1) + "\n    ")]
-            )
-          }),
-          0
+              [_c("i", { staticClass: "fas fa-chevron-right arrow" })]
+            ),
+          ],
+          2
         )
       : _vm._e(),
     _vm._v(" "),
@@ -787,33 +864,68 @@ var render = function () {
       ? _c(
           "ul",
           { staticClass: "pagenation" },
-          _vm._l(_vm.pageNum, function (page, index) {
-            return _c(
+          [
+            _c(
               "li",
               {
                 directives: [
                   {
                     name: "show",
                     rawName: "v-show",
-                    value:
-                      index + 1 <= Math.ceil(_vm.pageNum.length / _vm.parPage),
-                    expression:
-                      "index + 1 <= Math.ceil(pageNum.length / parPage)",
+                    value: _vm.parPage < _vm.pageNum.length,
+                    expression: "parPage <  pageNum.length",
                   },
                 ],
-                key: page.id,
-                staticClass: "page-list",
-                class: { active: page.click_flg },
-                on: {
-                  click: function ($event) {
-                    return _vm.relike_paging(index + 1)
+                on: { click: _vm.prev },
+              },
+              [_c("i", { staticClass: "fas fa-chevron-left arrow" })]
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.pageNum, function (page, index) {
+              return _c(
+                "li",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value:
+                        index + 1 <=
+                        Math.ceil(_vm.pageNum.length / _vm.parPage),
+                      expression:
+                        "index + 1 <= Math.ceil(pageNum.length / parPage)",
+                    },
+                  ],
+                  key: page.id,
+                  staticClass: "page-list",
+                  class: { active: page.click_flg },
+                  on: {
+                    click: function ($event) {
+                      return _vm.relike_paging(index + 1)
+                    },
                   },
                 },
+                [_vm._v("\n      " + _vm._s(index + 1) + "\n    ")]
+              )
+            }),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.parPage < _vm.pageNum.length,
+                    expression: "parPage <  pageNum.length",
+                  },
+                ],
+                on: { click: _vm.next },
               },
-              [_vm._v("\n      " + _vm._s(index + 1) + "\n    ")]
-            )
-          }),
-          0
+              [_c("i", { staticClass: "fas fa-chevron-right arrow" })]
+            ),
+          ],
+          2
         )
       : _vm._e(),
     _vm._v(" "),
@@ -822,9 +934,21 @@ var render = function () {
           "ul",
           { staticClass: "pagenation all" },
           [
-            _c("li", { on: { click: _vm.prev } }, [
-              _c("i", { staticClass: "fas fa-chevron-left arrow" }),
-            ]),
+            _c(
+              "li",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.parPage < _vm.pageNum.length,
+                    expression: "parPage <  pageNum.length",
+                  },
+                ],
+                on: { click: _vm.prev },
+              },
+              [_c("i", { staticClass: "fas fa-chevron-left arrow" })]
+            ),
             _vm._v(" "),
             _vm._l(_vm.pageNum, function (page, index) {
               return _c(
@@ -854,9 +978,21 @@ var render = function () {
               )
             }),
             _vm._v(" "),
-            _c("li", { on: { click: _vm.next } }, [
-              _c("i", { staticClass: "fas fa-chevron-right arrow" }),
-            ]),
+            _c(
+              "li",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.parPage < _vm.pageNum.length,
+                    expression: "parPage <  pageNum.length",
+                  },
+                ],
+                on: { click: _vm.next },
+              },
+              [_c("i", { staticClass: "fas fa-chevron-right arrow" })]
+            ),
           ],
           2
         )

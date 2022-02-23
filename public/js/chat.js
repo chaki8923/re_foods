@@ -1979,8 +1979,7 @@ __webpack_require__.r(__webpack_exports__);
         message: this.message
       };
       axios.post(this.axios_path, params).then(function (res) {
-        _this.message = "";
-        console.log(res.data["body"]);
+        _this.message = ""; // console.log(res.data["body"]);
 
         _this.words.push(res.data);
       })["catch"](function (err) {// console.log(err);
@@ -1997,9 +1996,9 @@ __webpack_require__.r(__webpack_exports__);
         message: this.message
       };
       axios.get(path).then(function (res) {
-        console.log(res.data);
-        console.log('送り主:' + _this2.my_id);
-        console.log('送り相手:' + _this2.pertner_id);
+        // console.log(res.data);
+        // console.log('送り主:' + this.my_id);
+        // console.log('送り相手:' + this.pertner_id);
         _this2.words = res.data;
       })["catch"](function (err) {
         console.log(err);
@@ -2012,8 +2011,7 @@ __webpack_require__.r(__webpack_exports__);
 
     this.getMessage();
     Echo.channel("chat").listen("MessageCreated", function (e) {
-      console.log("イベント発火");
-
+      // console.log("イベント発火");
       _this3.getMessage(); // 全メッセージを再読込
 
     });

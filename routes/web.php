@@ -58,7 +58,7 @@ Route::get('ajax/get_message', 'AxiosController@get_message')->name('get_message
 Route::get('/foods_show', 'MyFoodsController@foods_show')->name('foods_show')->middleware('login');
 Route::get('/item_list/{id}', 'MyFoodsController@item_list')->name('item_list')->middleware('login');
 Route::get('/item_detail/{id}', 'MyFoodsController@item_detail')->name('item_detail')->middleware('login');
-Route::get('/item_list/search/{id}/{val}', 'AxiosController@search_food')->name('search_food');
+Route::get('/item_list/search/{id}/{val}', 'AxiosController@search_food')->name('search_food')->middleware('login');
 //////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////食材編集/////////////////////////////////////////

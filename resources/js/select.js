@@ -3,10 +3,7 @@ window.Vue = require('vue');
 
 $(function () {
 
-    $('#pic1').on('click',function(){
-        console.log('aaaa');
-        
-    })
+
     for (let i = 1; i <= 3; i++) {
 
         $(`.pic-preview${i}`).on('click', function () {
@@ -96,7 +93,6 @@ const app3 = new Vue({
             
                     switch (id) {
                         case "0":
-                            console.log('0');
                             
                             this.category = this.all;
                             break;
@@ -157,7 +153,6 @@ const app3 = new Vue({
 
             switch (id) {
                 case "0":
-                    console.log('0');
                     
                     this.category = this.all;
                     break;

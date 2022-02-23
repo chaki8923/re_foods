@@ -16,7 +16,7 @@ const app8 = new Vue({
     },
     methods: {
       get_reserve(){
-        console.log('click');
+        // console.log('click');
         
         const path = "/all_reserve_list";
         axios.get(path).then(res =>{

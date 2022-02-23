@@ -139,16 +139,14 @@ __webpack_require__.r(__webpack_exports__);
     setDecision: function setDecision() {
       this.decision_flg = !this.decision_flg;
       this.modal_flg = false;
-      axios.post(this.decision_link).then(function (res) {
-        console.log(res.data);
+      axios.post(this.decision_link).then(function (res) {// console.log(res.data);
       })["catch"](function (err) {
         console.log(err);
       });
     }
   },
-  mounted: function mounted() {
-    console.log(this.store);
-    console.log(this.food);
+  mounted: function mounted() {// console.log(this.store);
+    // console.log(this.food);
   }
 });
 

@@ -39,10 +39,10 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="tell" placeholder="任意"  class="col-md-4 col-form-label text-md-right">{{ __('Tell') }}</label>
+              <label for="tell"  class="col-md-4 col-form-label text-md-right">{{ __('Tell') }}</label>
 
               <div class="col-md-6">
-                <input id="tell" type="tell" class="form-control @error('tell_number') is-invalid @enderror" name="tell_number" value="{{ old('tell_number') }}"  autocomplete="">
+                <input id="tell" type="tell" class="form-control @error('tell_number') is-invalid @enderror" name="tell_number" value="{{ old('tell_number') }}" placeholder="任意"   autocomplete="">
 
                 @error('tell_number')
                 <span class="invalid-feedback" role="alert">

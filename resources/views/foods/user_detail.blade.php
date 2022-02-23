@@ -26,7 +26,7 @@
   </tr>
   <tr>
     <th>登録してる食材</th>
-    <td><a href="{{route('pertner',$store->id)}}">{{$foods_num}}件</a></td>
+    <td><a href="{{route('pertner',$store->store_id)}}">{{$foods_num}}件</a></td>
   </tr>
   <tr>
     <th>電話番号</th>

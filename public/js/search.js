@@ -201,7 +201,7 @@ __webpack_require__.r(__webpack_exports__);
       var array = ["/item_list/search/", this.cat_id, "/", val.target.value];
       var path = array.join("");
       axios.get(path).then(function (res) {
-        console.log(res.data);
+        // console.log(res.data);
         _this.lists = res.data;
       })["catch"](function (err) {
         console.log(err);

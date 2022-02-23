@@ -95,6 +95,7 @@
     </div>
 
     <ul class="pagenation dec" v-if="decision_flg">
+       <li @click="prev" v-show="parPage <  pageNum.length" ><i class="fas fa-chevron-left arrow"></i></li>
       <li
         v-for="(page, index) in pageNum"
         :key="page.index"
@@ -105,8 +106,10 @@
       >
         {{ index + 1 }}
       </li>
+       <li @click="next"  v-show="parPage <  pageNum.length" ><i class="fas fa-chevron-right arrow"></i></li>
     </ul>
     <ul class="pagenation" v-if="like_flg">
+       <li @click="prev" v-show="parPage <  pageNum.length" ><i class="fas fa-chevron-left arrow"></i></li>
       <li
         v-for="(page, index) in pageNum"
         class="page-list"
@@ -117,8 +120,10 @@
       >
         {{ index+ 1 }}
       </li>
+       <li @click="next"  v-show="parPage <  pageNum.length" ><i class="fas fa-chevron-right arrow"></i></li>
     </ul>
     <ul class="pagenation" v-if="relike_flg">
+      <li @click="prev" v-show="parPage <  pageNum.length" ><i class="fas fa-chevron-left arrow"></i></li>
       <li
         v-for="(page, index) in pageNum"
         class="page-list"
@@ -129,9 +134,10 @@
       >
         {{ index + 1 }}
       </li>
+       <li @click="next"  v-show="parPage <  pageNum.length" ><i class="fas fa-chevron-right arrow"></i></li>
     </ul>
     <ul class="pagenation all" v-if="!decision_flg && !like_flg && !relike_flg">
-      <li @click="prev" ><i class="fas fa-chevron-left arrow"></i></li>
+      <li @click="prev" v-show="parPage <  pageNum.length" ><i class="fas fa-chevron-left arrow"></i></li>
       <li
         v-for="(page, index) in pageNum"
         class="page-list"
@@ -142,7 +148,7 @@
       >
         {{ index + 1 }}
       </li>
-      <li @click="next" ><i class="fas fa-chevron-right arrow"></i></li>
+      <li @click="next"  v-show="parPage <  pageNum.length" ><i class="fas fa-chevron-right arrow"></i></li>
     </ul>
   </div>
 </template>
@@ -191,6 +197,8 @@ export default {
         .then((res) => {
           this.lists = res.data["page"];
           this.pageNum = res.data["all"];
+          console.log(res.data['all']);
+          
           this.pageNum.map((item, i) => {
             item["page_id"] = i + 1;
             item["click_flg"] = false;
@@ -353,7 +361,7 @@ export default {
   },
   computed: {
     getPage: function () {
-      console.log(thi.pageNum);
+      // console.log(this.pageNum);
 
       return this.pageNum.filter((item) => item.index <= this.getPage);
     },

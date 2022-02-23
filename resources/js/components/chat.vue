@@ -70,7 +70,7 @@ export default {
         .then((res) => {
           this.message = "";
 
-          console.log(res.data["body"]);
+          // console.log(res.data["body"]);
           this.words.push(res.data);
         })
         .catch(function (err) {
@@ -86,10 +86,10 @@ export default {
       axios
         .get(path)
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           
-          console.log('送り主:' + this.my_id);
-          console.log('送り相手:' + this.pertner_id);
+          // console.log('送り主:' + this.my_id);
+          // console.log('送り相手:' + this.pertner_id);
           this.words = res.data;
         })
         .catch(function (err) {
@@ -103,7 +103,7 @@ export default {
     this.getMessage();
     
     Echo.channel("chat").listen("MessageCreated", (e) => {
-      console.log("イベント発火");
+      // console.log("イベント発火");
 
       this.getMessage(); // 全メッセージを再読込
     });

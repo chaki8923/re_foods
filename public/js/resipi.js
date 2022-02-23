@@ -144,9 +144,6 @@ __webpack_require__.r(__webpack_exports__);
         --this.like_number;
       }
 
-      var id = this.food_id;
-      var array = ["/item_detail/", id];
-      var path = array.join("");
       axios.post(this.axios_path).then(function (response) {// this.like_check();
       })["catch"](function (err) {
         console.log(err);
@@ -154,10 +151,10 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    console.log(this.food_id); //イベントは発火した
-
-    Echo.channel("chat").listen("LikeSignale", function (e) {
-      console.log("Likeイベント発火"); // this.like_check();
+    // console.log(this.food_id);
+    //イベントは発火した
+    Echo.channel("chat").listen("LikeSignale", function (e) {// console.log("Likeイベント発火");
+      // this.like_check();
     });
   }
 });

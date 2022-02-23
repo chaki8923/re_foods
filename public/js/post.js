@@ -99,9 +99,6 @@ $(function () {
     $('.prview-inner').css('opacity', 0);
     $('.image').attr('src', '');
   });
-  $('.js-comment').on('keydown', function () {
-    console.log('aaa');
-  });
   $('.item-view').find('.js-main-view').addClass('fadeIn');
   $('.js-img-current').addClass('active');
   $('.js-click-changeView').on('click', function (e) {
@@ -125,6 +122,11 @@ $(function () {
   $('.tab-item').on('click', function () {
     $('.tab-item').removeClass('active');
     $(this).addClass('active');
+  }); //テキストカウント
+
+  $('.js-comment').on('keyup', function () {
+    var text_count = $(this).val().replace(/[\n\s　]/g, "").length;
+    $('.js-text-count').text(text_count);
   });
 });
 new Vue({
@@ -140,7 +142,6 @@ new Vue({
     onClick: function onClick() {
       var _this = this;
 
-      console.log('click');
       var url = '/ajax/postal_search?' + ['first_code=' + this.firstCode, 'last_code=' + this.lastCode].join('&');
       axios.get(url).then(function (response) {
         _this.prefecture = response.data.prefecture;

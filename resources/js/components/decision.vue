@@ -48,7 +48,7 @@ export default {
       axios
         .post(this.decision_link)
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
         })
         .catch(function (err) {
           console.log(err);
@@ -57,8 +57,8 @@ export default {
   },
 
   mounted() {
-    console.log(this.store);
-    console.log(this.food);
+    // console.log(this.store);
+    // console.log(this.food);
   },
 };
 </script>

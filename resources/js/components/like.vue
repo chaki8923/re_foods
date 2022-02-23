@@ -57,9 +57,7 @@ export default {
         -- this.like_number;
       }
    
-      const id = this.food_id;
-      const array = ["/item_detail/", id];
-      const path = array.join("");
+     
       axios
         .post(this.axios_path)
         .then((response) => {
@@ -71,11 +69,11 @@ export default {
     },
   },
   mounted() {
-    console.log(this.food_id);
+    // console.log(this.food_id);
     
      //イベントは発火した
        Echo.channel("chat").listen("LikeSignale", (e) => {
-      console.log("Likeイベント発火");
+      // console.log("Likeイベント発火");
       // this.like_check();
     });
 
