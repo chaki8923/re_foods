@@ -8,7 +8,7 @@
   </div>
   <div class="item-container">
     @if($food->decision_flg)
-    <img src="/storage/images/decision.gif" alt="" class="decision-img" >
+    <img src="/images/decision.gif" alt="" class="decision-img" >
     @endif
     <div id="like">
       <like-component :food="{{$food}}" :food_id="{{$food->id}}" :like_flg_check="{{$food->likes}}" :like_num="{{$likes->count()}}" :like_one="{{$like_one->count()}}" root="{{$root}}" :likes="{{$likes}}" :user_id="{{$user_id}}" like_list_link="{{$like_list_link}}" axios_path="{{$axios_path}}">
