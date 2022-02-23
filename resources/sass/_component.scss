@@ -74,6 +74,9 @@
     opacity: 1;
     transform: rotateY(0);
   }
+  @include mq(sp) {
+    width: 100%;
+  }
   &-title {
     width: 100%;
     text-align: center;
@@ -379,6 +382,12 @@
   left: 0;
   height: auto;
   overflow-y: scroll;
+  &.position_change{
+    @include mq(sp){
+      position: relative;
+      top: 10px;
+    }
+  }
   @include mq(sp){
     position: absolute;
     top: -42px;
@@ -416,6 +425,7 @@
       transform: scaleY(1);
       transition: 0.2s;
       transform-origin: top left;
+  
     }
   }
   &-open {
@@ -598,8 +608,19 @@
   top: 5em;
   right: 15px;
   list-style: none;
+  display: flex;
+  overflow-x: scroll;
+  @include mq(md){
+    top: 16em;
+    width: 100%;
+    overflow-x: scroll;
+  }
   @include mq(sp){
-    top: 14em;
+    top: 16em;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow-x: scroll;
   }
   li{
     display: inline-block;

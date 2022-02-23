@@ -89,7 +89,9 @@ body {
   p{
     color: #333;
     font-family: YuGothic,'Yu Gothic','游明朝体+36ポかな','YuMincho +36p Kana','Hannotate SC',sans-serif;
-
+    @include mq(sp){
+      font-size: 18px;
+    }
   }
   @include mq(sp) {
     width: 90%;
@@ -524,32 +526,34 @@ position: relative;
     transition: 0.2s;
     &:nth-child(2) {
       @include mq(md) {
-        border-top: none;
+        // border-top: none;
       }
       @include mq(sp) {
-        border-top: none;
+        // border-top: none;
       }
     }
     &:nth-child(3) {
       @include mq(md) {
-        border-top: none;
+        // border-top: none;
       }
       @include mq(sp) {
-        border-top: none;
+        // border-top: none;
       }
     }
     &:nth-child(4) {
       @include mq(md) {
-        border-top: none;
+        // border-top: none;
       }
       @include mq(sp) {
-        border-top: none;
+        // border-top: none;
       }
     }
     @include mq(md) {
+      margin-bottom: 6px;
       width: 50%;
     }
     @include mq(sp) {
+      margin-bottom: 6px;
       width: 80%;
     }
     &.active {

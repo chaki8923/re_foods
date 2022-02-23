@@ -393,10 +393,15 @@ class RegisterController extends Controller
         Storage::disk('public')->delete('images/' . $val->pic3);
       }
       
-      Like::where('food_id', $val->id)->where('store_id', $id)->delete();
       Message::where('food_id', $val->id)->delete();
       $val->delete();
     }
+    $likes = Like::where('store_id', $id)->get();
+    foreach($likes as $val){
+      $val->delete();
+    }
+
+
     $store->delete();
     session()->flush();
     return redirect()->route('top_page');

@@ -56165,6 +56165,7 @@ $(function () {
     }
   });
   $('.js-info-open').on('click', function () {
+    $('.new-massage-area').toggleClass('position_change');
     $('.info-dropdown').toggleClass('active');
     $('.info-open').toggleClass('active');
   });
