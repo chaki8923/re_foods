@@ -58,9 +58,9 @@ class ChatController extends Controller
         });
 
         $messages = $query->get();
+        $axios_path = route('chat.send',['id'=>$food->id,'kind'=>$pertner->id]);
 
-
-        return view('foods.chat', compact('my', 'food', 'messages', 'pertner'));
+        return view('foods.chat', compact('my', 'food', 'messages', 'pertner','axios_path'));
     }
 
 

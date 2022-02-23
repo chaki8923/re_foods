@@ -41,7 +41,7 @@
 
 <script>
 export default {
-  props: ["food_id", "messages", "mypic", "pertner","food"],
+  props: ["food_id", "messages", "mypic", "pertner","food","axios_path"],
   data: function () {
     return {
       message: "",
@@ -66,7 +66,7 @@ export default {
       const path = array.join("");
       const params = { message: this.message };
       axios
-        .post(path, params)
+        .post(this.axios_path, params)
         .then((res) => {
           this.message = "";
 
@@ -74,7 +74,7 @@ export default {
           this.words.push(res.data);
         })
         .catch(function (err) {
-          console.log(err);
+          // console.log(err);
         });
     },
     getMessage() {

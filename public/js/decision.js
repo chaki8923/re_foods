@@ -121,7 +121,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["store", "food"],
+  props: ["store", "food", "decision_link"],
   data: function data() {
     return {
       decision_flg: this.food.decision_flg,
@@ -136,14 +136,10 @@ __webpack_require__.r(__webpack_exports__);
     closeModal: function closeModal() {
       this.modal_flg = false;
     },
-    setDecision: function setDecision(u_id, f_id) {
+    setDecision: function setDecision() {
       this.decision_flg = !this.decision_flg;
       this.modal_flg = false;
-      var id = u_id;
-      var food_id = f_id;
-      var array = ["https://chakiinfra.com/push_decision/", id, "/", food_id];
-      var path = array.join("");
-      axios.post(path).then(function (res) {
+      axios.post(this.decision_link).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         console.log(err);
@@ -247,11 +243,7 @@ var render = function () {
                   "button",
                   {
                     staticClass: "btn btn-success",
-                    on: {
-                      click: function ($event) {
-                        return _vm.setDecision(_vm.food.id)
-                      },
-                    },
+                    on: { click: _vm.setDecision },
                   },
                   [_vm._v("YES")]
                 ),

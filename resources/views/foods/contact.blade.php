@@ -1,5 +1,5 @@
+@section('title', 'お問い合わせ')
 @extends('layouts.app')
-
 @section('content')
 <form action="{{route('sendmail')}}" method="post">
 <div class="Form">

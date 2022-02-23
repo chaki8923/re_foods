@@ -1,3 +1,4 @@
+@section('title', '食材登録')
 @extends('layouts.app')
 @section('content')
 

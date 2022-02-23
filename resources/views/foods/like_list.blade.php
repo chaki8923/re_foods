@@ -1,5 +1,5 @@
+@section('title', '気になるリスト')
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div id="push">

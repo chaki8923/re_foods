@@ -1,8 +1,9 @@
+@section('title', '食材詳細')
 @extends('layouts.app')
 @section('content')
 <div class="detail-container">
   <div id="push">
-    <push-component food_link="{{$link}}">
+    <push-component food_link="{{$link}}" >
     </push-component>
   </div>
   <div class="item-container">
@@ -10,7 +11,7 @@
     <img src="/storage/images/decision.gif" alt="" class="decision-img" >
     @endif
     <div id="like">
-      <like-component :food="{{$food}}" :food_id="{{$food->id}}" :like_flg_check="{{$food->likes}}" :like_num="{{$likes->count()}}" :like_one="{{$like_one->count()}}" root="{{$root}}" :likes="{{$likes}}" :user_id="{{$user_id}}">
+      <like-component :food="{{$food}}" :food_id="{{$food->id}}" :like_flg_check="{{$food->likes}}" :like_num="{{$likes->count()}}" :like_one="{{$like_one->count()}}" root="{{$root}}" :likes="{{$likes}}" :user_id="{{$user_id}}" like_list_link="{{$like_list_link}}" axios_path="{{$axios_path}}">
       </like-component>
     </div>
     <div class="item-view">
@@ -35,7 +36,7 @@
     </div>
     <div id="decision">
       @if($food->store_id == $store->id)
-      <decision-component :store="{{$store}}" :food="{{$food}}">
+      <decision-component :store="{{$store}}" :food="{{$food}}" decision_link="{{$decision_link}}">
       </decision-component>
       @endif
     </div>

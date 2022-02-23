@@ -1,8 +1,8 @@
+@section('title', 'チャット')
 @extends('layouts.app')
-
 @section('content')
   <div id="chat">
-  <chat-component :food_id="{{$food->id}}" :messages="{{$messages}}" :mypic="{{$my}}" :pertner="{{$pertner}}" :food="{{$food}}" ></chat-component>
+  <chat-component :food_id="{{$food->id}}" :messages="{{$messages}}" :mypic="{{$my}}" :pertner="{{$pertner}}" :food="{{$food}}" axios_path={{$axios_path}} ></chat-component>
 
     @error('message')
     <strong>{{ $message }}</strong>

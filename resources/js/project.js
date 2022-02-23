@@ -19,7 +19,7 @@ setInterval(function(){
 
   $('.slide' + currentSlide).fadeIn('slow');
 
-},5000);
+},3000);
 
 
   if($('.flash-inner')){

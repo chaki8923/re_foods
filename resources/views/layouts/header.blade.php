@@ -9,8 +9,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
+   
+    <title>@yield('title') | {{ config('app.name') }}</title>
+    <meta name="description" content="@yield('description')">
 
 
     <!-- Fonts -->
@@ -19,13 +20,13 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css" rel="stylesheet">
     <!-- Styles -->
-  
+
     <link href="/css/app.css" rel="stylesheet">
     <link href="/css/mycrop.css" rel="stylesheet">
-    
+
     <!-- Scripts -->
     <!-- <script src="/js/app.js" defer></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-    
+
 </head>
 @show

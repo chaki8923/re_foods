@@ -1,3 +1,4 @@
+@section('title', 'HOME')
 @extends('layouts.app')
 @section('content')
 <!-- {{phpinfo()}} -->

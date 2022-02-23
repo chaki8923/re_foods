@@ -1,3 +1,4 @@
+@section('title', '食材一覧')
 @extends('layouts.app')
 @section('content')
 <div class="container">

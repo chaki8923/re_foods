@@ -1,3 +1,4 @@
+@section('title', '利用規約')
 @extends('layouts.app')
 @section('content')
 

@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  props: ["food_id", "like_flg_check", "like_num", "like_one","root",'likes','user_id','food'],
+  props: ["food_id", "like_flg_check", "like_num", "like_one","root",'likes','user_id','food','like_list_link','axios_path'],
   data: function () {
     return {
       status: false,
@@ -35,11 +35,8 @@ export default {
   },
   methods: {
     go_list() {
-      const id = this.food_id;
-      const array = ["/like_list/",id];
-      //joinは配列の中の文字列をつなげてくれる。
-      const path = array.join("");
-      axios.get(path).then(res => {
+   
+      axios.get(this.like_list_link).then(res => {
         
       }).catch(function(err){
         console.log(err);
@@ -64,7 +61,7 @@ export default {
       const array = ["/item_detail/", id];
       const path = array.join("");
       axios
-        .post(path)
+        .post(this.axios_path)
         .then((response) => {
           // this.like_check();
         })

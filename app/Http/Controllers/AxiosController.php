@@ -32,8 +32,6 @@ class AxiosController extends Controller
         $food = Food::find($food_id);
         $like_one = Like::where('store_id', $id)->where('food_id', $food_id)->get();
 
-        Log::debug($like_one);
-        //この処理はOK
 
         if ($like_one->count() > 0) {
             Log::debug('trueだよ');

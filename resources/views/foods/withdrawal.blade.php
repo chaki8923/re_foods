@@ -1,3 +1,4 @@
+@section('title', '退会')
 @extends('layouts.app')
 @section('content')
 <h2 class="text-center mt-5">退会してよろしいですか？</h2>

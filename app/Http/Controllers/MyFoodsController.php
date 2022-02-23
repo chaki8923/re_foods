@@ -386,7 +386,7 @@ class MyFoodsController extends Controller
         $sub_category = SubCategory::where('api_id', $food->sub_category_id)->first();
         $like_one = Like::where('store_id', session()->get('id'))->where('food_id', $id)->get();
         $messages = Message::where('to_store', $store->id)->get();
-
+        $decision_link = route('decision',['food_id'=>$food->id]);
         //投稿者の情報
         $abater = Store::find($food->store_id);
         $likes = Like::where('food_id', $id)->get();
@@ -405,16 +405,17 @@ class MyFoodsController extends Controller
 
         $root = route('like_list', $food->id);
         $pertner = getPushClass::getPush();
-
+        $like_list_link =  route('like_list', ['id'=>$food->id]);
 
         if ($pertner->isEmpty()) {
             $link = route('chat.list', 0);
         } else {
             $link = route('chat.list', $pertner[0]->food_id);
         }
+        $axios_path = route('like.add', ['id'=>$food->id]);
 
         $user_id = session()->get('id');
-        return view('foods.fooddetail', compact('store', 'food', 'category', 'likes', 'like_one', 'message_num', 'sub_category', 'root', 'link', 'user_id', 'abater'));
+        return view('foods.fooddetail', compact('store', 'food', 'category', 'likes', 'like_one', 'message_num', 'sub_category', 'root', 'link', 'user_id', 'abater','decision_link','like_list_link','axios_path'));
     }
     //=========================食材編集==============================
 

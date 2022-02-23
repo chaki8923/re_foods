@@ -112,7 +112,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["food_id", "like_flg_check", "like_num", "like_one", "root", 'likes', 'user_id', 'food'],
+  props: ["food_id", "like_flg_check", "like_num", "like_one", "root", 'likes', 'user_id', 'food', 'like_list_link', 'axios_path'],
   data: function data() {
     return {
       status: false,
@@ -128,11 +128,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     go_list: function go_list() {
-      var id = this.food_id;
-      var array = ["/like_list/", id]; //joinは配列の中の文字列をつなげてくれる。
-
-      var path = array.join("");
-      axios.get(path).then(function (res) {})["catch"](function (err) {
+      axios.get(this.like_list_link).then(function (res) {})["catch"](function (err) {
         console.log(err);
       });
     },
@@ -151,7 +147,7 @@ __webpack_require__.r(__webpack_exports__);
       var id = this.food_id;
       var array = ["/item_detail/", id];
       var path = array.join("");
-      axios.post(path).then(function (response) {// this.like_check();
+      axios.post(this.axios_path).then(function (response) {// this.like_check();
       })["catch"](function (err) {
         console.log(err);
       });

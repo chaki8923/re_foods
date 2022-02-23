@@ -1,3 +1,5 @@
+@section('title', 'RE:FOODsとは')
+
 @extends('layouts.app')
 @section('content')
 <div class="main-title title">
@@ -13,9 +15,9 @@
       助け合う事の出来るサービス
     </strong>
     <div class="main-content-image">
-      <img src="/storage/images/hand.jpg" alt="" class="js-slide slide1">
-      <img src="/storage/images/radexish.jpg" alt="" class="js-slide slide2">
-      <img src="/storage/images/vegitable.jpg" alt="" class="js-slide slide3">
+      <img src="/images/hand.jpg" alt="" class="js-slide slide1">
+      <img src="/images/radexish.jpg" alt="" class="js-slide slide2">
+      <img src="/images/vegitable.jpg" alt="" class="js-slide slide3">
     </div>
     <h3 class="discription-title title">こんなサービスです</h3>
     <section class="discription">
@@ -23,7 +25,7 @@
       <p>コンセプトである「手の届く範囲」で助け合う。<br>これを実現させる為に表示される食材等は全て”徒歩10分以内”。実際にフードロスに困っている人に逢いに行ってやり取りをします。</p>
     </section>
     <div class="main-content-image">
-      <img src="/storage/images/safe_person.png" class="">
+      <img src="/images/safe_person.png" class="">
       
     </div>
     <section class="discription">
@@ -31,9 +33,9 @@
       <p>大カテゴリー、サブカテゴリーとわかれており合計200種類以上の食材を登録する事が可能なため、欲しい食材がきっと見つかるはずです。</p>
     </section>
     <div class="main-content-image">
-      <img src="/storage/images/baravegi.jpg" alt="" class="js-slide slide1">
-      <img src="/storage/images/orange.jpg" alt="" class="js-slide slide2">
-      <img src="/storage/images/pan.jpg" alt="" class="js-slide slide3">
+      <img src="/images/baravegi.jpg" alt="" class="js-slide slide1">
+      <img src="/images/orange.jpg" alt="" class="js-slide slide2">
+      <img src="/images/pan.jpg" alt="" class="js-slide slide3">
     </div>
     <section class="discription">
       <h2>3、食材を使った人気レシピを表示</h2>
@@ -42,7 +44,7 @@
       </p>
     </section>
     <div class="main-content-image">
-      <img src="/storage/images/eggpalte.jpg" alt="" class="">
+      <img src="/images/eggpalte.jpg" alt="" class="">
     </div>
     <section class="discription">
       <h2>4、相手のアクションがリアルタイムでわかる</h2>

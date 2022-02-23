@@ -94,7 +94,7 @@ Route::get('/get_store', 'AxiosController@get_store')->name('get_store');
 
 ///////////////////////////////////////チャット画面///////////////////////////////////////
 Route::get('/item_detail/{id}/{kind}/chat', 'ChatController@chat')->name('chat');
-Route::post('item_detail/{id}/{kind}/chat', 'Ajax\ChatRoomController@create')->name('chat.send');
+Route::post('/item_detail/{id}/{kind}/chat', 'Ajax\ChatRoomController@create')->name('chat.send');
 Route::get('ajax/item_detail/{id}/{kind}/chat', 'Ajax\ChatRoomController@index')->name('chat.index');
 //チャットリスト
 Route::get('/item_detail/{id}/chatlist', 'ChatController@chatlist')->name('chat.list');

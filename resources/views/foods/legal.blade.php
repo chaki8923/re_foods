@@ -1,3 +1,4 @@
+@section('title', '特商法')
 @extends('layouts.app')
 @section('content')
 <div class="container-wraiper">

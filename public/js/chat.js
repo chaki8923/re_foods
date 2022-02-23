@@ -1950,7 +1950,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["food_id", "messages", "mypic", "pertner", "food"],
+  props: ["food_id", "messages", "mypic", "pertner", "food", "axios_path"],
   data: function data() {
     return {
       message: "",
@@ -1978,13 +1978,12 @@ __webpack_require__.r(__webpack_exports__);
       var params = {
         message: this.message
       };
-      axios.post(path, params).then(function (res) {
+      axios.post(this.axios_path, params).then(function (res) {
         _this.message = "";
         console.log(res.data["body"]);
 
         _this.words.push(res.data);
-      })["catch"](function (err) {
-        console.log(err);
+      })["catch"](function (err) {// console.log(err);
       });
     },
     getMessage: function getMessage() {

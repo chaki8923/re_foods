@@ -16,7 +16,7 @@
           <img :src="'/images/hatena.png'" alt="" class="hatena">
         <div class="modal-btn">
           <button class="btn btn-primary" @click="closeModal">close</button>
-          <button class="btn btn-success" @click="setDecision(food.id)">YES</button>
+          <button class="btn btn-success" @click="setDecision">YES</button>
         </div>
       </div>
     </transition>
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  props: ["store", "food"],
+  props: ["store", "food","decision_link"],
   data: function () {
     return {
       decision_flg: this.food.decision_flg,
@@ -42,15 +42,11 @@ export default {
       
       this.modal_flg = false;
     },
-    setDecision: function (u_id, f_id) {
+    setDecision: function () {
       this.decision_flg = !this.decision_flg;
       this.modal_flg = false;
-      const id = u_id;
-      const food_id = f_id;
-      const array = ["https://chakiinfra.com/push_decision/", id, "/", food_id];
-      const path = array.join("");
       axios
-        .post(path)
+        .post(this.decision_link)
         .then((res) => {
           console.log(res.data);
         })

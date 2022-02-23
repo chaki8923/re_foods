@@ -374,7 +374,7 @@ class RegisterController extends Controller
 
     $id = session()->get('id');
     $account = IdentityProvider::where('store_id',$id)->first();
-    if($account->store_id){
+    if(!empty($account)){
       $account->delete();
     }
     $store = Store::find($id);

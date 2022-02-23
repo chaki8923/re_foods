@@ -1,3 +1,4 @@
+@section('title', 'TOP')
 @extends('layouts.app')
 <link rel="stylesheet" type="text/css" href="https://cdn.tutorialjinni.com/pagePiling.js/1.5.6/jquery.pagepiling.min.css" />
 @section('content')
