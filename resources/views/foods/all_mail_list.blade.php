@@ -24,7 +24,7 @@
                 <td>{{$user->store_name}}</td>
                 
                 <td><a href="{{route('chat',['id'=>$user->food_id,'kind'=>$user->from_store])}}"><button type="button" class="btn btn-primary">Mail</button></a></td>
-                <td class="user-detail-btn" ><a href="{{route('user_detail',$user->to_store)}}"><button type="button" class="btn btn-primary"><span class="responsibe">ユーザー</span>情報</button></a></td>
+                <td class="user-detail-btn" ><a href="{{route('user_detail',$user->from_store)}}"><button type="button" class="btn btn-primary"><span class="responsibe">ユーザー</span>情報</button></a></td>
 
                 @if($user->new_flg)
                 <td>
