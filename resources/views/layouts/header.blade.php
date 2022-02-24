@@ -13,7 +13,7 @@
     <meta property="og:title" content="RE:FOODs" />
     <meta property="og:description" content="おっさんの個人開発" />
     <meta property="og:site_name" content="RE:FOODs" />
-    <meta property="og:image" content="/images/twitter-card.png" />
+    <meta property="og:image" content="https://re-foods.com/images/twitter-card.png" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
