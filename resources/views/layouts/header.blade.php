@@ -5,11 +5,20 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- twitter card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="https://twitter.com/chaki01288" />
+    <meta property="og:url" content="https://re-foods.com/" />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="RE:FOODs" />
+    <meta property="og:description" content="おっさんの個人開発" />
+    <meta property="og:site_name" content="RE:FOODs" />
+    <meta property="og:image" content="/images/twitter-card.png" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-   
+
     <title>@yield('title') | {{ config('app.name') }}</title>
     <meta name="description" content="@yield('description')">
     <link rel="shortcut icon" href="/images/apple.png" type="image/x-icon">
