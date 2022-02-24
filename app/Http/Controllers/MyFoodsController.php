@@ -38,7 +38,7 @@ class MyFoodsController extends Controller
     //======================TOP=================================
     public function top_page()
     {
-        session()->forget('email');
+        // session()->forget('id');
         return view('foods.top_page');
     }
     //=======================================================
@@ -101,6 +101,7 @@ class MyFoodsController extends Controller
 
             session(['store_name' => $store->store_name]);
             session(['id' => $store->id]);
+            session(['email' => $store->email]);
 
             return redirect()->route('action', $store->id)->with('flash_message', __('ログインしました。'));
         } catch (Exception $e) {
@@ -115,6 +116,7 @@ class MyFoodsController extends Controller
             $store = Store::select('*')->where('id', $authUser['id'])->first();
             session(['store_name' => $store->store_name]);
             session(['id' => $store->id]);
+            session(['email' => $store->email]);
 
             return redirect()->route('action', $store->id)->with('flash_message', __('ログインしました。'));
         }
@@ -175,6 +177,14 @@ class MyFoodsController extends Controller
     public function action($id)
     {
 
+        
+        $store = Store::find($id);
+        Log::debug('mail'.$store->email);
+        Log::debug('session'.session()->get('email'));
+        if($store->email !== session()->get('email')){
+            Log::debug('ちゃう');
+            return redirect()->route('top_page');
+        }
         $today = Carbon::now(); //現在日時
         $limit = new Carbon('+1 day');
         $del_foods = Food::where('decision_flg', true)->get(); //今より3日前に成約した食材取得
@@ -230,7 +240,7 @@ class MyFoodsController extends Controller
         $new_msg = Message::where('new_flg', true)->groupBy('from_store')->get();
 
 
-        $store = Store::find($id);
+        
         $my_food_id = Food::where('store_id', $id)->select('id')->get();
         $address = Address::where('store_id', $id)->first();
 
