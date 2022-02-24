@@ -237,9 +237,12 @@ class RegisterController extends Controller
       $cropImageData = base64_decode(explode(",", explode(";", $request->cropImage)[1])[1]);
       $storageImagePath = storage_path('app/public') . $imagePath;
       file_put_contents($storageImagePath, $cropImageData);
+      $publicImagePath = '/storage' . $imagePath;
+    } else {
+      $publicImagePath = $store->store_image;
     }
 
-    $publicImagePath = '/storage' . $imagePath;
+   
 
     $store->fill([
       'store_name' => $request->store_name,

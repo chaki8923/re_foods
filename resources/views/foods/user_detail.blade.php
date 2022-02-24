@@ -8,7 +8,7 @@
 <div class="user-content">
   <div class="user-name">
     <div class="user-image">
-      @if($store->store_image)
+      @if($store->store_image !== '/storage/images/ .jpeg')
       <img src="{{$store->store_image}}" alt="">
       @else
       <img src="/images/default_image.png" alt="">

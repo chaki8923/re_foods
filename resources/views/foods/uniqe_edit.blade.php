@@ -28,7 +28,7 @@
               <label for="comment" class="col-md-4 col-form-label text-md-right">{{ __('Comment') }}</label>
 
               <div class="col-md-6">
-                
+
                 <textarea name="comment" id="comment" class="js-comment form-control @error('comment') is-invalid @enderror" cols="30" rows="10">@if(!old('comment')){{$store->comment}}@endif{{old('comment')}}</textarea>
                 @error('comment')
                 <span class="invalid-feedback" role="alert">
@@ -45,13 +45,17 @@
               @endisset
               <div id="image-area">
                 <label for="image">
-                  <span class="file-name">ファイルを選択</span> 
+                  <span class="file-name">ファイルを選択</span>
                   <input type="file" id="image" name="image" accept="image/*" class="image">
                 </label>
                 <input type="hidden" id="cropImage" name="cropImage" value="" />
                 <button type="button" class="btn btn-primary d-block mt-2 delete-image">キャンセル</button>
                 <div id="image-style" class="preview">
+                  @if($store->store_image !== '/storage/images/ .jpeg')
+                  <img src="{{$store->store_image}}" class="prview-inner" alt="プロフィール画像" id="image-output">
+                  @else
                   <img src="" class="prview-inner" alt="プロフィール画像" id="image-output">
+                  @endif
                 </div>
               </div>
             </div>
