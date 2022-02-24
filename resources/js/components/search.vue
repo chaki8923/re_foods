@@ -29,7 +29,7 @@
           />
            <img :src="'/images/decision.gif'" alt="" class="decision-icon" v-show="store.decision_flg">
           <div class="card-body" style="height: 215px">
-            <h4 class="card-title w-100">{{ store.store_name }}</h4>
+            <h4 class="card-title w-100">投稿者:{{ store.store_name }}</h4>
             <p class="">価格:{{ store.plice.toLocaleString() }}</p>
             <p class="">期限:{{ store.loss_limit }}</p>
             <a :href="detail_link.replace('/0', '/' + store.id)">

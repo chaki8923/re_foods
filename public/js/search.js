@@ -324,7 +324,7 @@ var render = function () {
                     },
                     [
                       _c("h4", { staticClass: "card-title w-100" }, [
-                        _vm._v(_vm._s(store.store_name)),
+                        _vm._v("投稿者:" + _vm._s(store.store_name)),
                       ]),
                       _vm._v(" "),
                       _c("p", {}, [
