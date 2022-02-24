@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Log;
 
-class EditValidate extends FormRequest
+class ContactVeridation extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,22 +24,27 @@ class EditValidate extends FormRequest
      */
     public function rules()
     {
+        Log::debug('ばりで');
         return [
             'store_name'=>'required',
-            'comment'=>'string|required|max:255',
-     
+            'email'=>'required|email',
+            'message'=>'string|max:255',
         ];
+        Log::debug('ばりで後ろ');
     }
-
+    
     public function messages()
     {
+        Log::debug('ばりで2');
         return[
             'store_name.required'=>'名前は必須です。',
-            'comment.string'=>'文字列で入力して下さい。',
-            'comment.required'=>'自己紹介を登録してみよう！',
-            'comment.max:255'=>'文字数オーバーです。',
+            'email.required'=>'Emailは必須です',
+            'email.email'=>'形式が異なります',
+            'message.string'=>'文字を入力してください',
+            'message.max:255'=>'文字数オーバーです。',
             
         ];
+        Log::debug('ばりで後ろ2');
         
     }
 }

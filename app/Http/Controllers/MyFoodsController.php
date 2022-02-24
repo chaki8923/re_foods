@@ -22,7 +22,7 @@ use App\Mail\ContactMail;
 use Exception;
 use Illuminate\Support\Facades\Mail;
 use Laravel\Socialite\Facades\Socialite;
-
+use App\Http\Requests\ContactVeridation;
 
 
 class MyFoodsController extends Controller
@@ -564,14 +564,16 @@ class MyFoodsController extends Controller
     {
         return view('foods.contact');
     }
-    public function sendmail()
+
+    public function sendmail(ContactVeridation $request)
     {
 
-
+        Log::debug('送信処理');
         $to = 'konkuriitonouenokareha128@gmail.com';
-        $name = request()->input('name');
-        $email = request()->input('email');
-        $text = request()->input('comment');
+        $name = $request->store_name;
+        $email = $request->email;
+        $text = $request->message;
+
 
         Mail::to($to)->send(new ContactMail($text, $name, $email));
 
