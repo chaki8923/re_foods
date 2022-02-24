@@ -8,7 +8,11 @@
 <div class="user-content">
   <div class="user-name">
     <div class="user-image">
+      @if($store->store_image)
       <img src="{{$store->store_image}}" alt="">
+      @else
+      <img src="/images/default_image.png" alt="">
+      @endif
       <p>{{$store->store_name}}</p>
     </div>
     <div class="user-comment">
