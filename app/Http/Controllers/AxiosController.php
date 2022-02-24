@@ -270,6 +270,7 @@ class AxiosController extends Controller
     public function search_food($id, $val)
     {
 
+        $address = Address::where('store_id', session()->get('id'))->first();
         if ($val == 0) {
             Log::debug('valは０');
             $stores = DB::table('stores')
@@ -279,6 +280,7 @@ class AxiosController extends Controller
                 ->select('store_name', 'foods.id', 'foods.store_id', 'sub_categories.food_name', 'foods.plice', 'foods.loss_limit', 'foods.pic1', 'sub_categories.api_id', 'foods.category_id')
                 ->where('category_id', $id)
                 ->where('decision_flg', false)
+                ->where('foods.address', $address->address)
                 ->get();
         } else {
 
@@ -291,6 +293,7 @@ class AxiosController extends Controller
                 ->where('category_id', $id)
                 ->where('sub_categories.api_id', $val)
                 ->where('decision_flg', false)
+                ->where('foods.address', $address->address)
                 ->get();
         }
 
