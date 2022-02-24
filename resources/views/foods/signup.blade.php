@@ -64,7 +64,7 @@
               <div class="form-group row">
                 <label for="prefecture" class="col-md-4 col-form-label text-md-right">{{ __('prefecture') }}</label>
                 <div class="col-md-6">
-                  <input v-model="prefecture" id="prefecture" type="text" class="form-control @error('prefecture') is-invalid @enderror" name="prefecture" value="{{ old('prefecture') }}" autocomplete="adress">
+                  <input v-model="prefecture" id="prefecture" type="text" class="form-control @error('prefecture') is-invalid @enderror" name="prefecture" value="{{ old('prefecture') }}" placeholder="必須" autocomplete="adress">
                   @error('prefecture')
                   <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -75,7 +75,7 @@
               <div class="form-group row">
                 <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('city') }}</label>
                 <div class="col-md-6">
-                  <input v-model="city" id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" autocomplete="address">
+                  <input v-model="city" id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" placeholder="必須" autocomplete="address">
                   @error('city')
                   <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -86,7 +86,7 @@
               <div class="form-group row">
                 <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('address') }}</label>
                 <div class="col-md-6">
-                  <input v-model="address" id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" autocomplete="address">
+                  <input v-model="address" id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" placeholder="必須" autocomplete="address">
                   @error('address')
                   <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -111,7 +111,7 @@
               <label for="password"   class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
               <div class="col-md-6">
-                <input id="password" placeholder="必須" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
+                <input id="password" placeholder="必須(4桁以上)" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
 
                 @error('password')
                 <span class="invalid-feedback" role="alert">
