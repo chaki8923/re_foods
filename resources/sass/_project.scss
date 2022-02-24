@@ -90,7 +90,7 @@ body {
     color: #333;
     font-family: YuGothic,'Yu Gothic','游明朝体+36ポかな','YuMincho +36p Kana','Hannotate SC',sans-serif;
     @include mq(sp){
-      font-size: 18px;
+      font-size: 16px;
     }
   }
   @include mq(sp) {
@@ -341,6 +341,9 @@ position: relative;
   color: #fff;
   background: #F9975D;
   font-size: 2em;
+  @include mq(sp){
+    font-size: 16px;
+  }
 }
 .resipe-area {
   width: 100%;
