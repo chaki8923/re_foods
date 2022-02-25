@@ -144,8 +144,8 @@ class AxiosController extends Controller
     
     public function get_all($id)
     {
-        $min = ($id - 1) * 4;
-        $max = 4;
+        $min = ($id - 1) * 6;
+        $max = 6;
       Log::debug('はじまり'.$min);
       Log::debug('limit'.$max);
         $u_id = session()->get('id');
@@ -168,8 +168,8 @@ class AxiosController extends Controller
     public function get_like($id)
     {
         $u_id = session()->get('id');
-        $min = ($id - 1) * 4;
-        $max = 4;
+        $min = ($id - 1) * 6;
+        $max = 6;
         $foods = Food::where('foods.store_id', '<>', $u_id)
             ->join('likes', 'foods.id', '=', 'likes.food_id')
             ->join('sub_categories', 'foods.sub_category_id', '=', 'sub_categories.api_id')
@@ -195,8 +195,8 @@ class AxiosController extends Controller
     public function re_like($id)
     {
         $u_id = session()->get('id');
-        $min = ($id - 1) * 4;
-        $max = 4;
+        $min = ($id - 1) * 6;
+        $max = 6;
 
         $foods = Food::where('foods.store_id', $u_id)
             ->where('foods.store_id', $u_id)
@@ -222,8 +222,8 @@ class AxiosController extends Controller
     }
     public function get_decision($id)
     {
-        $min = ($id - 1) * 4;
-        $max = 4;
+        $min = ($id - 1) * 6;
+        $max = 6;
         $foods = Food::where('decision_flg', true)
             ->join('sub_categories', 'foods.sub_category_id', '=', 'sub_categories.api_id')
             ->select('foods.id', 'foods.store_id', 'sub_categories.food_name', 'foods.plice', 'foods.loss_limit', 'foods.pic1', 'foods.decision_flg')

@@ -89,7 +89,7 @@ export default {
       lists: this.stores,
       my_flg: false,
       modal_flg: false,
-      parPage: 3,
+      parPage: 6,
       currentPage: 1,
       hit_flg: false,
     };

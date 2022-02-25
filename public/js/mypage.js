@@ -259,7 +259,7 @@ __webpack_require__.r(__webpack_exports__);
       lists: [],
       my_flg: false,
       modal_flg: false,
-      parPage: 4,
+      parPage: 6,
       pageNum: "",
       delete_id: "",
       category: this.categories,
