@@ -82,11 +82,11 @@
             <div class="form-group row justify-content-center">
               <label for="pic1" class="col-form-label cl-md-3 w-25 text-md-right">{{__('FOOD_IMAGE')}}</label>
               <div class="col-md-6">
-                <div class="food-pic">
-                  <input type="file" class="input-file1 file-area @error('pic1') is-invalid @enderror" name="pic1" id="pic1">
-                  <div class="pic-preview1 preview-area">
+                @for($i = 1;$i <= 3;$i ++) <div class="food-pic">
+                  <input type="file" class="input-file{{$i}} file-area @error('pic1') is-invalid @enderror" name="pic{{$i}}" id="pic1">
+                  <div class="pic-preview{{$i}} preview-area">
                     <span class="image-clear">✖️</span>
-                    <img src="@if($food->pic1)/storage/images/{{$food->pic1}}@endif" alt="" class="js-preview1 @if($food->pic1) hyouji @endif" >
+                    <img src="" alt="" class="js-preview{{$i}}">
                     <p>画像を選択</p>
                   </div>
                   @error('pic1')
@@ -95,33 +95,7 @@
                   </span>
                   @enderror
               </div>
-                <div class="food-pic">
-                  <input type="file" class="input-file2 file-area @error('pic2') is-invalid @enderror" name="pic2" id="pic2">
-                  <div class="pic-preview2 preview-area">
-                    <span class="image-clear">✖️</span>
-                    <img src="@if($food->pic2)/storage/images/{{$food->pic2}}@endif" alt="" class="js-preview2  @if($food->pic2) hyouji @endif">
-                    <p>画像を選択</p>
-                  </div>
-                  @error('pic2')
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                  @enderror
-              </div>
-                <div class="food-pic">
-                  <input type="file" class="input-file3 file-area @error('pic3') is-invalid @enderror" name="pic3" id="pic3">
-                  <div class="pic-preview3 preview-area">
-                    <span class="image-clear">✖️</span>
-                    <img src="@if($food->pic3)/storage/images/{{$food->pic3}}@endif" alt="" class="js-preview3  @if($food->pic3) hyouji @endif">
-                    <p>画像を選択</p>
-                  </div>
-                  @error('pic3')
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                  @enderror
-              </div>
-          
+              @endfor
             </div>
         </div>
 

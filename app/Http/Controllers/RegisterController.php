@@ -73,7 +73,7 @@ class RegisterController extends Controller
 
 
     $food = Food::find($id);
-    Log::debug($food);
+   
     if ($request->file('pic1')) {
 
       Storage::disk('public')->delete('images/' . $food->pic1);
@@ -95,6 +95,7 @@ class RegisterController extends Controller
       $food->pic1 = $name1;
     }
 
+  
     if ($request->file('pic2')) {
       Storage::disk('public')->delete('images/' . $food->pic2);
       $file2 = $request->file('pic2');
@@ -114,6 +115,9 @@ class RegisterController extends Controller
       // 保存する
       $food->pic2 = $name2;
     }
+
+
+
     if ($request->file('pic3')) {
 
       Storage::disk('public')->delete('images/' . $food->pic3);
