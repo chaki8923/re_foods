@@ -55,9 +55,9 @@
             <div id="app2">
               <div class="form-group row post-input">
                 <label for="post" class="col-md-4 col-form-label text-md-right">{{ __('post_num') }}</label>
-           
+
                 <div class="col-md-6 d-flex">
-                  <input type="text" v-model="firstCode" name="first_code" class="form-control @error('address') is-invalid @enderror" value="@if(!old('first_code')) {{ $address->first_code }} @endif {{old('first_code')}}">&nbsp;-&nbsp;<input type="text" v-model="lastCode" name="last_code" class="form-control @error('address') is-invalid @enderror"  value="{{ old('last_code')}} ">
+                  <input type="text" v-model="firstCode" name="first_code" class="form-control @error('address') is-invalid @enderror" value="@if(!old('first_code')) {{ $address->first_code }} @endif {{old('first_code')}}">&nbsp;-&nbsp;<input type="text" v-model="lastCode" name="last_code" class="form-control @error('address') is-invalid @enderror" value="{{ old('last_code')}} ">
                 </div>
                 <button type="button" @click="onClick" class="btn btn-warning search-btn">検索</button>
               </div>
@@ -98,7 +98,7 @@
             <div class="form-group row">
               <label for="place" class="col-md-4 col-form-label text-md-right">{{ __('place') }}</label>
               <div class="col-md-6">
-                <input  id="place" type="text" class="form-control @error('place') is-invalid @enderror" name="place" value="@if(!old('place')) {{ $address->place }} @endif{{ old('place') }}" autocomplete="">
+                <input id="place" type="text" class="form-control @error('place') is-invalid @enderror" name="place" value="@if(!old('place')) {{ $address->place }} @endif{{ old('place') }}" autocomplete="">
                 @error('place')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -134,13 +134,17 @@
               @endisset
               <div id="image-area">
                 <label for="image">
-                  <span class="file-name">ファイルを選択</span> 
+                  <span class="file-name">ファイルを選択</span>
                   <input type="file" id="image" name="image" accept="image/*" class="image">
                 </label>
                 <input type="hidden" id="cropImage" name="cropImage" value="" />
                 <button type="button" class="btn btn-primary d-block mt-2 delete-image">キャンセル</button>
                 <div id="image-style" class="preview">
+                  @if($store->store_image !== '/storage/images/ .jpeg')
+                  <img src="{{$store->store_image}}" class="prview-inner" alt="プロフィール画像" id="image-output" style="opacity: 1;">
+                  @else
                   <img src="" class="prview-inner" alt="プロフィール画像" id="image-output">
+                  @endif
                 </div>
               </div>
             </div>

@@ -52,7 +52,7 @@
                 <button type="button" class="btn btn-primary d-block mt-2 delete-image">キャンセル</button>
                 <div id="image-style" class="preview">
                   @if($store->store_image !== '/storage/images/ .jpeg')
-                  <img src="{{$store->store_image}}" class="prview-inner" alt="プロフィール画像" id="image-output">
+                  <img src="{{$store->store_image}}" class="prview-inner" alt="プロフィール画像" id="image-output" style="opacity: 1;">
                   @else
                   <img src="" class="prview-inner" alt="プロフィール画像" id="image-output">
                   @endif

@@ -1265,6 +1265,10 @@ body {
   }
 }
 
+.hyouji {
+  opacity: 1 !important;
+}
+
 .flash-message {
   position: fixed;
   top: 0;
