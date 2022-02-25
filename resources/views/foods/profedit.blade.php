@@ -5,7 +5,7 @@
   <div class="row justify-content-center">
     <div class="col-md-10">
       <div class="card">
-        <div class="card-header">{{ __('UNIQE_EDIT') }}</div>
+        <div class="card-header">{{ __('登録情報変更') }}</div>
 
         <div class="card-body">
           <form method="POST" action="{{ route('prof_edit') }}" enctype="multipart/form-data">
