@@ -9,13 +9,16 @@
       :class="[data.from_store == my_id ? 'right' : 'left']"
     >
     
-      <img :src="myImg" alt="" class="pic" v-if="data.from_store == my_id" />
+      <img :src="myImg" alt="" class="pic" v-if="data.from_store == my_id"  />
+     
       <img
         :src="pertnerImg"
         alt=""
         class="pic"
         v-if="data.from_store !== my_id"
+       
       />
+    
       <p
         class="comment"
         :class="[data.from_store == my_id ? 'right-triangle' : 'left-triangle']"

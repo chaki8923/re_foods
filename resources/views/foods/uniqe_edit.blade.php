@@ -49,12 +49,14 @@
                   <input type="file" id="image" name="image" accept="image/*" class="image">
                 </label>
                 <input type="hidden" id="cropImage" name="cropImage" value="" />
-                <button type="button" class="btn btn-primary d-block mt-2 delete-image">キャンセル</button>
+                <!-- <button type="button" class="btn btn-primary d-block mt-2 delete-image">キャンセル</button> -->
                 <div id="image-style" class="preview">
-                  @if($store->store_image !== '/storage/images/ .jpeg')
-                  <img src="{{$store->store_image}}" class="prview-inner" alt="プロフィール画像" id="image-output" style="opacity: 1;">
+                @if(!$store->store_image )
+                  <img src="/images/default_image.png" class="prview-inner" alt="プロフィール画像" id="image-output">
+                  @elseif($store->store_image == '/storage/images/ .jpeg')
+                  <img src="/images/default_image.png" class="prview-inner" alt="プロフィール画像2" id="image-output" style="opacity: 1;">
                   @else
-                  <img src="" class="prview-inner" alt="プロフィール画像" id="image-output">
+                  <img src="{{$store->store_image}}" class="prview-inner" alt="プロフィール画像" id="image-output" style="opacity: 1;">
                   @endif
                 </div>
               </div>
