@@ -37,9 +37,9 @@
     <!-- <script src="/js/app.js" defer></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 
-    
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-493EVGY5ZK"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-221431185-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -48,7 +48,8 @@
         }
         gtag('js', new Date());
 
-        gtag('config', 'G-493EVGY5ZK');
+        gtag('config', 'UA-221431185-1');
     </script>
+
 </head>
 @show
