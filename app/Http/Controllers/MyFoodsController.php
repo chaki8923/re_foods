@@ -179,10 +179,9 @@ class MyFoodsController extends Controller
 
         
         $store = Store::find($id);
-        Log::debug('mail'.$store->email);
-        Log::debug('session'.session()->get('email'));
+       
         if($store->email !== session()->get('email')){
-            Log::debug('ちゃう');
+          
             return redirect()->route('top_page');
         }
         $today = Carbon::now(); //現在日時

@@ -13,6 +13,8 @@ function readFile(input, modalId, modalBodyId) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+
 $(function(){
 
 

@@ -46,6 +46,10 @@
                             <a class="nav-link" href="{{ route('foods_show') }}">{{ __('Food_List') }}</a>
                         </li>
                         
+                        <li class="nav-item">
+                        <a class="nav-link" href="{{ route('prof_show') }}">{{ __('PROF_EDIT') }}</a>
+                        </li>
+                        
                         @endif
                         @if (!Session::has('store_name'))
                         <li class="nav-item">
@@ -68,7 +72,7 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-                                <a class="dropdown-item" href="{{ route('prof_show') }}">{{ __('PROF_EDIT') }}</a>
+                              
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>

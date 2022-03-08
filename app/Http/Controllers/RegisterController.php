@@ -52,13 +52,17 @@ class RegisterController extends Controller
       'store_name' => $request->store_name,
       'email' => $request->email,
       'password' => Hash::make($request['password']),
-      'tell_number' => $request->tell_number,
-      'store_image' => $publicImagePath
+      // 'tell_number' => $request->tell_number,
+      // 'store_image' => $publicImagePath
+    ])->save();
+    $address->fill([
+      'store_id' => $store->id,
+
     ])->save();
 
 
-    $address->store_id = $store->id;
-    $address->fill($request->all())->save();
+    // $address->store_id = $store->id;
+    // $address->fill($request->all())->save();
 
     session(['store_name' => $store->store_name]);
     session(['email' => $store->email]);

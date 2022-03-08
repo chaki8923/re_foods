@@ -38,74 +38,8 @@
                 @enderror
               </div>
             </div>
-            <div class="form-group row">
-              <label for="tell"  class="col-md-4 col-form-label text-md-right">{{ __('Tell') }}</label>
-
-              <div class="col-md-6">
-                <input id="tell" type="tell" class="form-control @error('tell_number') is-invalid @enderror" name="tell_number" value="{{ old('tell_number') }}" placeholder="任意"   autocomplete="">
-
-                @error('tell_number')
-                <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-              </div>
-            </div>
-            <!-- 住所エリア -->
-            <div id="app2">
-              <div class="form-group row post-input">
-                <label for="post" class="col-md-4 col-form-label text-md-right">{{ __('post_num') }}</label>
-
-                <div class="col-md-6 d-flex">
-                  <input type="text" placeholder="必須" v-model="firstCode" name="first_code" class="form-control @error('address') is-invalid @enderror" value="{{old('first_code')}}">&nbsp;-&nbsp;<input type="text" v-model="lastCode" placeholder="必須"  name="last_code" class="form-control @error('address') is-invalid @enderror" value="{{old('last_code')}}">
-                </div>
-                <button type="button" @click="onClick" class="btn btn-warning search-btn">検索</button>
-              </div>
-              <div class="form-group row">
-                <label for="prefecture" class="col-md-4 col-form-label text-md-right">{{ __('prefecture') }}</label>
-                <div class="col-md-6">
-                  <input v-model="prefecture" id="prefecture" type="text" class="form-control @error('prefecture') is-invalid @enderror" name="prefecture" value="{{ old('prefecture') }}" placeholder="必須" autocomplete="adress">
-                  @error('prefecture')
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                  @enderror
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('city') }}</label>
-                <div class="col-md-6">
-                  <input v-model="city" id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" placeholder="必須" autocomplete="address">
-                  @error('city')
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                  @enderror
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('address') }}</label>
-                <div class="col-md-6">
-                  <input v-model="address" id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" placeholder="必須" autocomplete="address">
-                  @error('address')
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                  @enderror
-                </div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="place" class="col-md-4 col-form-label text-md-right">{{ __('place') }}</label>
-              <div class="col-md-6">
-                <input  id="place" type="text" class="form-control @error('place') is-invalid @enderror" name="place" value="{{ old('place') }}" placeholder="任意"  autocomplete="">
-                @error('place')
-                <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-              </div>
-            </div>
+            
+            
 
             <div class="form-group row">
               <label for="password"   class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
@@ -127,41 +61,8 @@
                 <input id="password-confirm" placeholder="必須"  type="password" class="form-control" name="password_confirmation" autocomplete="password_confirmation">
               </div>
             </div>
-            <div class="form-group row">
-              <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Your Image') }}</label>
-              @isset($publicImagePath)
-              <img src="{{asset($publicImagePath)}}" name="">
-              @endisset
-              <div id="image-area">
-              <label for="image">
-                <span class="file-name">ファイルを選択</span> 
-
-                <input type="file" id="image" name="image" accept="image/*" class="image">
-              </label>
-                <input type="hidden" id="cropImage" name="cropImage" value="" />
-                <button type="button" class="btn btn-primary d-block mt-2 delete-image">キャンセル</button>
-                <div id="image-style" class="preview">
-                  <img src="" class="prview-inner" alt="プロフィール画像" id="image-output">
-                </div>
-              </div>
-            </div>
-            <!-- modal画面 -->
-            <div class="modal fade" id="cropImagePop" tabindex="-1" role="dialog" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                  </div>
-                  <div class="modal-body">
-                    <div id="upload-demo" class="center-block"></div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="modal-btn-cancel" data-dismiss="modal">キャンセル</button>
-                    <button type="button" id="cropImageBtn" class="modal-bton-crop">決定</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
+            
             <div class="form-group row mb-0">
               <div class="col-md-6 offset-md-4">
                 <button type="submit" class="btn btn-primary  w-75 m-auto d-block">
