@@ -406,13 +406,14 @@ class RegisterController extends Controller
       
       Message::where('food_id', $val->id)->delete();
       $val->delete();
+
     }
     $likes = Like::where('store_id', $id)->get();
     foreach($likes as $val){
       $val->delete();
     }
 
-
+    Address::where('store_id', $id)->delete();
     $store->delete();
     session()->flush();
     return redirect()->route('top_page');

@@ -179,6 +179,7 @@ class MyFoodsController extends Controller
 
         
         $store = Store::find($id);
+
        
         if($store->email !== session()->get('email')){
           
@@ -242,6 +243,7 @@ class MyFoodsController extends Controller
         
         $my_food_id = Food::where('store_id', $id)->select('id')->get();
         $address = Address::where('store_id', $id)->first();
+        $my_address = Address::where('address',$address->address)->get();
 
         $pertner = getPushClass::getPush();
         Log::debug('パートナー中身' . $pertner);
@@ -266,7 +268,7 @@ class MyFoodsController extends Controller
 
 
 
-        return view('foods.action', compact('store', 'foods', 'new_msg', 'pertner', 'link', 'my_food_id', 'likes', 'detail_link', 'address'));
+        return view('foods.action', compact('store', 'foods', 'new_msg', 'pertner', 'link', 'my_food_id', 'likes', 'detail_link', 'address','my_address'));
     }
 
 

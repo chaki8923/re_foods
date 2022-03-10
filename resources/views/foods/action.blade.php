@@ -31,28 +31,32 @@
   <push-component :pertner="{{$pertner}}" food_link="{{$link}}" :my_food_id="{{$my_food_id}}" detail_link="{{$detail_link}}">
   </push-component>
 </div>
-@if($address->address)
-<h2 class="text-center mt-5">ようこそ、<strong>{{$store->store_name}}</strong> <span class="small">さん</span><br>まずはどちらかを選択してください。</h2>
-@else
-<h2 class="text-center mt-5">ようこそ、<strong>{{$store->store_name}}</strong> <span class="small">さん</span><br>まずは右上のメニューの<br>会員情報変更から住所を登録してください。</h2>
-@endif
+<div>
 
-@if($address->address)
-<div class="select-content">
-  <a href="{{route('food_register_show',$store->id)}}" class="action-select register text-white text-center text-decoration-none">
-    <p class="h4">ロスになりそうな食品を登録。</p>
-    <img src="{{asset('images/safe2.png')}}" alt="" class="flat-image">
-  </a>
-  <a href="{{route('foods_show')}}" class="action-select search text-white text-center text-decoration-none">
-    <p class="h4">ロスになりそうな食品を助ける。</p>
-    <img src="{{asset('images/safe3.png')}}" alt="" class="flat-image">
-  </a>
+  <h3 class="text-center mt-5" style="color: #3490dc;">あなたの近くのユーザー数:{{$my_address->count()}}人</h3>
+  @if($address->address)
+  <h2 class="text-center mt-5">ようこそ、<strong>{{$store->store_name}}</strong> <span class="small">さん</span><br>まずはどちらかを選択してください。</h2>
+  @else
+  <h2 class="text-center mt-5">ようこそ、<strong>{{$store->store_name}}</strong> <span class="small">さん</span><br>まずは右上のメニューの<br>会員情報変更から住所を登録してください。</h2>
+  @endif
+
+  @if($address->address)
+  <div class="select-content">
+    <a href="{{route('food_register_show',$store->id)}}" class="action-select register text-white text-center text-decoration-none">
+      <p class="h4">ロスになりそうな食品を登録。</p>
+      <img src="{{asset('images/safe2.png')}}" alt="" class="flat-image">
+    </a>
+    <a href="{{route('foods_show')}}" class="action-select search text-white text-center text-decoration-none">
+      <p class="h4">ロスになりそうな食品を助ける。</p>
+      <img src="{{asset('images/safe3.png')}}" alt="" class="flat-image">
+    </a>
+  </div>
+  @else
+  <div class="no-address">
+    <img src="{{asset('images/woman.png')}}" alt="" class="flat-image w-50 mx-auto d-block mt-5">
+  </div>
+  @endif
 </div>
-@else
-<div class="no-address">
-<img src="{{asset('images/woman.png')}}" alt="" class="flat-image w-50 mx-auto d-block mt-5">
-</div>
-@endif
 
 @include('layouts.footer')
 @include('layouts.loading')
