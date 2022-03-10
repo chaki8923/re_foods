@@ -35,7 +35,12 @@
   @if($store->id == 16)
   <h3 class="text-center mt-5" style="color: #3490dc;">現在のユーザー数:{{$store->count()}}人</h3>
   @endif
+  @if($my_address->count())
   <h3 class="text-center mt-5" style="color: #3490dc;">あなたの近くのユーザー数:{{$my_address->count()}}人</h3>
+  @else
+  <h3 class="text-center mt-5" style="color: #3490dc;">あなたの近くのユーザーはまだいません。</h3>
+  @endif
+
   @if($address->address)
   <h2 class="text-center mt-5">ようこそ、<strong>{{$store->store_name}}</strong> <span class="small">さん</span><br>まずはどちらかを選択してください。</h2>
   @else
