@@ -32,7 +32,9 @@
   </push-component>
 </div>
 <div>
-
+  @if($store->id == 16)
+  <h3 class="text-center mt-5" style="color: #3490dc;">現在のユーザー数:{{$store->count()}}人</h3>
+  @endif
   <h3 class="text-center mt-5" style="color: #3490dc;">あなたの近くのユーザー数:{{$my_address->count()}}人</h3>
   @if($address->address)
   <h2 class="text-center mt-5">ようこそ、<strong>{{$store->store_name}}</strong> <span class="small">さん</span><br>まずはどちらかを選択してください。</h2>
