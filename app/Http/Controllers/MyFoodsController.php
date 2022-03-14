@@ -243,7 +243,7 @@ class MyFoodsController extends Controller
         
         $my_food_id = Food::where('store_id', $id)->select('id')->get();
         $address = Address::where('store_id', $id)->first();
-        $my_address = Address::where('address',$address->address)->get();
+        $my_address = Address::where('address',$address->address)->where('store_id','<>',$id)->get();
 
         $pertner = getPushClass::getPush();
         Log::debug('パートナー中身' . $pertner);
