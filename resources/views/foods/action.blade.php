@@ -37,11 +37,11 @@
   @endif
   
   @if($address->address)
-  @if($my_address->count())
-  <h3 class="text-center mt-5" style="color: #3490dc;">あなたの近くのユーザー数:{{$my_address->count()}}人</h3>
-  @else
-  <h3 class="text-center mt-5" style="color: #3490dc;">あなたの近くのユーザーはまだいません。</h3>
-  @endif
+    @if($my_address->count())
+   <h3 class="text-center mt-5" style="color: #3490dc;">あなたの近くのユーザー数:{{$my_address->count()}}人</h3>
+    @else
+    <h3 class="text-center mt-5" style="color: #3490dc;">あなたの近くのユーザーはまだいません。</h3>
+    @endif
   @endif
 
   @if($address->address)

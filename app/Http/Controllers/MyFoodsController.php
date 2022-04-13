@@ -38,7 +38,9 @@ class MyFoodsController extends Controller
     //======================TOP=================================
     public function top_page()
     {
-        // session()->forget('id');
+        if(session()->get('id')){
+            return redirect()->route('action',session()->get('id'));
+        }
         return view('foods.top_page');
     }
     //=======================================================
@@ -179,12 +181,16 @@ class MyFoodsController extends Controller
 
         
         $store = Store::find($id);
+        if(!$store){
+            return view('errors.404');
+        }
+        
+
+        if($store->id !== session()->get('id')){
+            return redirect()->route('action',session()->get('id'));
+        } 
 
        
-        if($store->email !== session()->get('email')){
-          
-            return redirect()->route('top_page');
-        }
         $today = Carbon::now(); //現在日時
         $limit = new Carbon('+1 day');
         $del_foods = Food::where('decision_flg', true)->get(); //今より3日前に成約した食材取得
@@ -347,6 +353,11 @@ class MyFoodsController extends Controller
     //========================品物一覧===============================
     public function item_list($id)
     {
+        $category = Category::find($id);
+
+        if(!$category){
+            return view('errors.404');
+        }
         //最後に下記コードを検索条件に加える
         $address = Address::where('store_id', session()->get('id'))->first();
 
@@ -362,7 +373,6 @@ class MyFoodsController extends Controller
             ->where('foods.address', $address->address)
             ->get();
 
-        $category = Category::find($id);
         $sub_cat = SubCategory::where('parent_id', $category->api_id)->get();
         $pertner = getPushClass::getPush();
 
@@ -392,6 +402,10 @@ class MyFoodsController extends Controller
     public function item_detail($id)
     {
         $food = Food::find($id);
+
+        if(!$food){
+            return view('errors.404');
+        }
         $store = Store::find(session()->get('id'));
         $category = Category::find($food->category_id);
         $sub_category = SubCategory::where('api_id', $food->sub_category_id)->first();
@@ -433,10 +447,16 @@ class MyFoodsController extends Controller
     public function food_edit_show($id)
     {
 
-        $categories = Category::all();
-        $store = Store::find(session()->get('id'));
-        $sub_categories = SubCategory::all();
         $food = Food::find($id);
+        $store = Store::find(session()->get('id'));
+
+        if(!$food){
+            return view('errors.404');
+        }elseif($food->store_id !== $store->id){
+            return redirect()->route('action',$store->id)->with('flash_message', __('不正な操作が行われました。'));
+        }
+        $categories = Category::all();
+        $sub_categories = SubCategory::all();
         $cat = Category::find($food->category_id);
         Log::debug('cat中身' . $cat);
 
@@ -453,10 +473,23 @@ class MyFoodsController extends Controller
     //=========================USER 詳細==============================
     public function user_detail($id)
     {
+        $check = Store::find($id);
+        if(!$check){
+            return view('errors.404');
+        }
+        Log::debug('相手ID'.$id);
+        Log::debug('自分ID'.session()->get('id'));
+        $like_check = Like::select('id')->where('store_id',$id)->where('to_store',session()->get('id'))->first();
+        Log::debug('チェックID'.$like_check);
+        if(!$like_check){
+            return redirect()->route('action',session()->get('id'))->with('flash_message', __('不正な操作が行われました。'));
+        }
         $store = Store::find($id)
             ->join('address', 'stores.id', '=', 'address.store_id')
             ->where('address.store_id', $id)
             ->first();
+        
+        $message = Message::get('id')->where('from_store')->first();
         $pertner = getPushClass::getPush();
         $link = route('chat.list', 0);
         $foods = Food::where('store_id', $id)->get();

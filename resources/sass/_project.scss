@@ -953,3 +953,12 @@ position: relative;
   .hyouji{
     opacity: 1!important;
   }
+
+  .p-error__image{
+    width: 60%;
+    margin: auto;
+    @include mq(sp){
+      width: 80%;
+    }
+
+  }

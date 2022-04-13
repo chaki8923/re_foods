@@ -1269,6 +1269,17 @@ body {
   opacity: 1 !important;
 }
 
+.p-error__image {
+  width: 60%;
+  margin: auto;
+}
+
+@media screen and (max-width: 590px) {
+  .p-error__image {
+    width: 80%;
+  }
+}
+
 .flash-message {
   position: fixed;
   top: 0;
