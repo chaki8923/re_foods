@@ -958,7 +958,7 @@ position: relative;
     width: 60%;
     margin: auto;
     img{
-      width: 100%;
+      width: 100%!important;
     }
     @include mq(sp){
       width: 80%;
