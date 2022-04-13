@@ -1274,6 +1274,10 @@ body {
   margin: auto;
 }
 
+.p-error__image img {
+  width: 100%;
+}
+
 @media screen and (max-width: 590px) {
   .p-error__image {
     width: 80%;
