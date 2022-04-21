@@ -3,6 +3,11 @@ window.Vue = require('vue');
 
 $(function () {
 
+    $('.js-no-repeated').on('click',function(){
+        $(this).prop("disabled", true);
+        $(this).closest('form').submit();
+      });
+
 
     for (let i = 1; i <= 3; i++) {
 

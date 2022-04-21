@@ -185,7 +185,7 @@ class MyFoodsController extends Controller
             return view('errors.404');
         }
         
-
+        $stores = Store::all();
         if($store->id !== session()->get('id')){
             return redirect()->route('action',session()->get('id'));
         } 
@@ -274,7 +274,7 @@ class MyFoodsController extends Controller
 
 
 
-        return view('foods.action', compact('store', 'foods', 'new_msg', 'pertner', 'link', 'my_food_id', 'likes', 'detail_link', 'address','my_address'));
+        return view('foods.action', compact('store', 'foods', 'new_msg', 'pertner', 'link', 'my_food_id', 'likes', 'detail_link', 'address','my_address','stores'));
     }
 
 
@@ -339,7 +339,7 @@ class MyFoodsController extends Controller
 
         //自分のID
         $u_id = session()->get('id');
-        Log::debug('foods' . $foods);
+
         //相手のID
         $p_id = $id;
         $link = route('chat.list', 0);

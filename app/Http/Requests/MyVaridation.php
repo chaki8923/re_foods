@@ -40,7 +40,7 @@ class MyVaridation extends FormRequest
             'store_name.required'=>'店舗名は入力必須です',
             'email.required'=>'emailは入力必須です',
             'email.email'=>'emailの形式と異なります',
-          
+            'email.unique'=>'すでに登録されているアドレスです。',
             'password.required'=>'パスワードは入力必須です。',
             'password.min8'=>'8文字以上で入力してください。',
             'password.confirmed'=>'再入力と一致しません。',

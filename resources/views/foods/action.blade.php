@@ -34,6 +34,14 @@
 <div>
   @if($store->id == 16)
   <h3 class="text-center mt-5" style="color: #3490dc;">現在のユーザー数:{{$store->count()}}人</h3>
+  @foreach($stores as $store)
+  <table class="m-auto">
+    <tr>
+      <th>{{$store->id}}</th>
+      <td>{{$store->store_name}}</td>
+    </tr>
+  </table>
+@endforeach
   @endif
   
   @if($address->address)

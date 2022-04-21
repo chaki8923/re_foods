@@ -1,6 +1,10 @@
 
 $(function(){
 
+  $('.js-no-repeated').on('click',function(){
+    $(this).prop("disabled", true);
+    $(this).closest('form').submit();
+  });
 
   $('.delete-image').on('click',function(){
     $('#image-output').attr('src', '');

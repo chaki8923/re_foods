@@ -55782,6 +55782,11 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 $(function () {
+  $('.js-no-repeated').on('click', function () {
+    $(this).prop("disabled", true);
+    $(this).closest('form').submit();
+  });
+
   var _loop = function _loop(i) {
     $(".pic-preview".concat(i)).on('click', function () {
       $(".input-file".concat(i)).click();
