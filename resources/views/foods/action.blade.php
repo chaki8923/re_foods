@@ -39,6 +39,7 @@
     <tr>
       <th>{{$store->id}}</th>
       <td>{{$store->store_name}}</td>
+      <td>{{$store->created_at}}</td>
     </tr>
   </table>
 @endforeach
